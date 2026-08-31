@@ -1,0 +1,743 @@
+/* ==========================================================================
+   SARA PERICACHO — UGC
+   Paleta y medidas: cambia los valores de aquí abajo y cambia toda la web.
+   ========================================================================== */
+
+:root{
+  /* Colores */
+  --crema:      #F5F1EB;   /* fondo principal */
+  --crema-2:    #EBE4DA;   /* fondo de secciones alternas */
+  --blanco:     #FFFFFF;
+  --tinta:      #16130F;   /* negro de los textos */
+  --gris:       #6F675E;   /* textos secundarios */
+  --gris-fuerte:#3D352D;   /* el mismo tono pero más oscuro, para leer sobre
+                              la foto del banner, donde el gris normal se pierde */
+  --linea:      #DAD2C6;   /* bordes finos */
+  --rosa:       #E8467C;   /* acento */
+
+  /* Tipografías */
+  --serif:  'Playfair Display', Georgia, 'Times New Roman', serif;
+  --sans:   'Jost', 'Helvetica Neue', Arial, sans-serif;
+  --firma:  'Parisienne', 'Brush Script MT', cursive;
+  --serif-cat: 'Instrument Serif', 'Playfair Display', Georgia, serif;
+
+  /* Café oscuro, para los títulos de categoría del portfolio */
+  --cafe: #3B2A22;
+
+  /* Medidas */
+  --barra-alto: 78px;
+  --ancho: 1240px;
+  --radio: 2px;
+
+  /* Encuadre de la foto del banner. Si tu cara sale cortada,
+     cambia 'center' por 'top', '30% center', etc. */
+  --banner-encuadre: center center;
+}
+
+/* ── Reset ─────────────────────────────────────────────────────────────── */
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+body{
+  margin:0;
+  background:var(--crema);
+  color:var(--tinta);
+  font-family:var(--sans);
+  font-size:16px;
+  font-weight:300;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+img{ max-width:100%; display:block; }
+button{ font:inherit; color:inherit; cursor:pointer; }
+a{ color:inherit; text-decoration:none; }
+ul{ list-style:none; margin:0; padding:0; }
+h1,h2,h3,p{ margin:0; }
+::selection{ background:var(--rosa); color:#fff; }
+
+.contenedor{ width:min(100% - 48px, var(--ancho)); margin-inline:auto; }
+.contenedor--estrecho{ width:min(100% - 48px, 820px); }
+
+/* ── Botones ───────────────────────────────────────────────────────────── */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5em;
+  padding:15px 30px;
+  font-size:11px; font-weight:500; letter-spacing:.16em; text-transform:uppercase;
+  border:1px solid transparent; border-radius:var(--radio);
+  transition:background .3s, color .3s, border-color .3s, transform .3s;
+  white-space:nowrap;
+}
+.btn--negro{ background:var(--tinta); color:var(--crema); }
+.btn--negro:hover{ background:var(--rosa); color:#fff; transform:translateY(-2px); }
+.btn--linea{ background:transparent; color:var(--tinta); border-color:var(--tinta); }
+.btn--linea:hover{ background:var(--tinta); color:var(--crema); transform:translateY(-2px); }
+.btn--ancho{ width:100%; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   BARRA SUPERIOR
+   ══════════════════════════════════════════════════════════════════════════ */
+.barra{
+  position:fixed; inset:0 0 auto 0; z-index:100;
+  background:transparent;
+  transition:background .35s, box-shadow .35s, border-color .35s;
+  border-bottom:1px solid transparent;
+}
+.barra.solida{
+  background:rgba(245,241,235,.92);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border-bottom-color:var(--linea);
+}
+.barra__inner{
+  width:min(100% - 48px, 1400px); margin-inline:auto;
+  height:var(--barra-alto);
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+}
+
+.logo{ display:block; line-height:1.05; }
+.logo__l1{
+  display:block; font-family:var(--serif); font-size:20px; font-weight:500;
+  letter-spacing:.34em; text-indent:.34em;
+}
+.logo__l2{
+  display:block; font-family:var(--sans); font-size:9.5px; font-weight:400;
+  letter-spacing:.42em; text-indent:.42em; color:var(--gris);
+}
+
+.nav{ display:flex; align-items:center; gap:32px; }
+.nav__link{
+  position:relative; font-size:11px; font-weight:400;
+  letter-spacing:.16em; text-transform:uppercase; padding:6px 0;
+  transition:color .25s;
+}
+.nav__link::after{
+  content:''; position:absolute; left:0; bottom:0; height:1px; width:100%;
+  background:currentColor; transform:scaleX(0); transform-origin:right;
+  transition:transform .3s ease;
+}
+.nav__link:hover::after,
+.nav__link.activo::after{ transform:scaleX(1); transform-origin:left; }
+.nav__link.activo{ color:var(--rosa); }
+.nav__cta{ margin-left:8px; padding:13px 24px; }
+.nav__cta::after{ display:none; }
+
+.hamburguesa{
+  display:none; width:44px; height:44px; margin-right:-10px;
+  background:none; border:0; padding:11px 9px;
+  flex-direction:column; justify-content:space-between;
+}
+.hamburguesa span{ display:block; height:1.5px; background:var(--tinta); border-radius:2px; transition:transform .3s, opacity .25s; }
+.hamburguesa.abierta span:nth-child(1){ transform:translateY(9.5px) rotate(45deg); }
+.hamburguesa.abierta span:nth-child(2){ opacity:0; }
+.hamburguesa.abierta span:nth-child(3){ transform:translateY(-9.5px) rotate(-45deg); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   1. BANNER
+   ══════════════════════════════════════════════════════════════════════════ */
+.banner{
+  position:relative; isolation:isolate;
+  min-height:min(100svh, 900px);
+  display:flex; align-items:center;
+  padding:calc(var(--barra-alto) + 40px) 0 60px;
+  overflow:hidden;
+  background:var(--crema-2);
+}
+.banner__foto{
+  position:absolute; inset:0; z-index:-2;
+  background-size:cover; background-position:var(--banner-encuadre);
+  background-repeat:no-repeat;
+  animation:zoomSuave 18s ease-out forwards;
+}
+/* Fondo decorativo cuando todavía no hay foto puesta */
+.banner__foto.sin-foto{
+  background-image:
+    radial-gradient(60% 70% at 72% 40%, #F8E6EE 0%, transparent 70%),
+    linear-gradient(120deg, #EFE8DE 0%, #E3DACE 100%);
+  animation:none;
+}
+@keyframes zoomSuave{ from{ transform:scale(1.08); } to{ transform:scale(1); } }
+
+.banner__velo{
+  position:absolute; inset:0; z-index:-1;
+  background:
+    linear-gradient(100deg, rgba(245,241,235,.94) 0%, rgba(245,241,235,.72) 32%, rgba(245,241,235,.18) 58%, rgba(245,241,235,0) 78%),
+    linear-gradient(to top, rgba(245,241,235,.85) 0%, rgba(245,241,235,0) 38%);
+}
+
+.banner__inner{
+  width:min(100% - 48px, 1400px); margin-inline:auto;
+  display:grid; grid-template-columns:auto 1fr; gap:40px 56px;
+  align-items:center;
+}
+
+/* Iconos de contacto */
+/* Los contactos del banner se miden en 'em' a partir de la fila, para que
+   al cambiarles el tamaño desde el editor el icono crezca con el texto. */
+.social{ display:flex; flex-direction:column; gap:18px; }
+.social__item{ display:flex; align-items:center; gap:1.1em; font-size:13px; }
+.social__icono{
+  width:3.5em; height:3.5em; flex:none;
+  display:grid; place-items:center;
+  background:var(--tinta); color:var(--crema);
+  border-radius:50%;
+  transition:background .3s, transform .3s;
+}
+.social__item:hover .social__icono{ background:var(--rosa); transform:translateY(-3px) scale(1.05); }
+.social__icono svg{ width:1.55em; height:1.55em; fill:currentColor; }
+.social__texto{
+  font-size:1em; font-style:italic; color:var(--gris-fuerte);
+  font-weight:400;
+  transition:color .25s;
+}
+.social__item:hover .social__texto{ color:var(--tinta); }
+
+/* Nombre */
+.banner__texto{ text-align:right; justify-self:end; max-width:760px; }
+.banner__kicker{
+  font-size:13px; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--rosa); font-weight:400; margin-bottom:4px;
+}
+.banner__nombre{ line-height:.82; margin-bottom:10px; }
+.banner__nombre1{
+  display:block;
+  font-family:var(--serif); font-weight:400; color:var(--rosa);
+  font-size:clamp(72px, 13vw, 190px);
+  letter-spacing:-.01em;
+}
+.banner__nombre2{
+  display:block;
+  font-family:var(--firma); color:var(--rosa);
+  font-size:clamp(38px, 6.4vw, 92px);
+  line-height:1.1; margin-top:-.12em; padding-right:.08em;
+}
+.banner__frase{
+  max-width:44ch; margin-left:auto; margin-top:22px;
+  font-size:16px; color:var(--gris-fuerte); font-weight:400;
+}
+.banner__botones{ display:flex; gap:12px; justify-content:flex-end; flex-wrap:wrap; margin-top:30px; }
+
+/* Datos destacados */
+.banner__datos{
+  grid-column:1 / -1;
+  display:flex; gap:clamp(28px, 5vw, 72px); justify-content:flex-end; flex-wrap:wrap;
+  margin-top:8px;
+}
+.banner__dato b{
+  display:block; font-family:var(--sans); font-weight:600;
+  font-size:clamp(22px, 2.6vw, 32px); line-height:1.15;
+}
+.banner__dato span{
+  font-size:clamp(15px, 1.8vw, 20px); font-weight:600; color:var(--tinta);
+}
+
+.banner__scroll{
+  position:absolute; left:50%; bottom:22px; translate:-50% 0;
+  width:24px; height:38px; border:1px solid var(--gris); border-radius:12px;
+  display:grid; place-items:start center; padding-top:7px; opacity:.6;
+}
+.banner__scroll span{ width:3px; height:7px; background:var(--gris); border-radius:2px; animation:baja 1.6s infinite; }
+@keyframes baja{ 0%{opacity:0;transform:translateY(-3px)} 40%{opacity:1} 100%{opacity:0;transform:translateY(9px)} }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   2. MARCAS
+   ══════════════════════════════════════════════════════════════════════════ */
+.marcas{
+  background:var(--crema-2);
+  border-block:1px solid var(--linea);
+  padding:34px 0 30px;
+  overflow:hidden;
+}
+.marcas__titulo{
+  text-align:center; font-size:10.5px; letter-spacing:.3em;
+  text-transform:uppercase; color:var(--gris); margin-bottom:22px;
+}
+/* Gira sin parar nunca, tampoco al pasar el ratón por encima */
+.marcas__pista{
+  display:flex; gap:clamp(20px, 2.4vw, 36px); align-items:center; width:max-content;
+  animation:desliza 42s linear infinite;
+}
+/* El carrusel NO se para nunca: ni al pasar el ratón, ni aunque el
+   ordenador tenga las animaciones desactivadas. Es parte del diseño. */
+@keyframes desliza{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+/* Todos los logos, la MISMA ALTURA. El ancho lo pone cada uno según su
+   forma, y la caja se ajusta al logo: así el hueco hasta el siguiente se
+   mide desde donde acaba el logo de verdad, y se ve igual sea cuadrado
+   o alargado. (Antes iban en una caja fija y los cuadrados dejaban mucho
+   aire dentro, pareciendo que estaban más separados.) */
+.marca{
+  display:flex; align-items:center; justify-content:center;
+  flex:none; white-space:nowrap;
+  height:clamp(38px, 4.4vw, 56px);
+}
+.marca img{
+  height:100%; width:auto; max-width:none; object-fit:contain;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   SECCIONES GENÉRICAS
+   ══════════════════════════════════════════════════════════════════════════ */
+.seccion{ padding:clamp(72px, 9vw, 128px) 0; scroll-margin-top:var(--barra-alto); }
+.seccion--crema{ background:var(--crema-2); }
+.seccion__head{ text-align:center; margin-bottom:clamp(40px, 5vw, 62px); }
+.seccion__titulo{
+  font-family:var(--serif); font-weight:400;
+  font-size:clamp(32px, 5vw, 54px); letter-spacing:.06em; line-height:1.1;
+}
+.seccion__sub{ margin-top:12px; color:var(--gris); font-size:16px; }
+.vacio{ text-align:center; color:var(--gris); padding:40px 0; }
+
+/* Aparición al hacer scroll */
+.reveal{ opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.visible{ opacity:1; transform:none; }
+@media (prefers-reduced-motion:reduce){
+  .reveal{ opacity:1; transform:none; transition:none; }
+  html{ scroll-behavior:auto; }
+  .banner__foto, .banner__scroll span{ animation:none; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   3. PORTFOLIO
+   ══════════════════════════════════════════════════════════════════════════ */
+.filtros{ display:flex; flex-direction:column; align-items:center; gap:14px; margin-bottom:44px; }
+.filtros__fila{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+.filtros__fila--formato{
+  padding-top:16px; border-top:1px solid var(--linea);
+  width:min(100%, 340px); justify-content:center;
+}
+.chip{
+  display:inline-flex; align-items:center; gap:7px;
+  padding:10px 20px; background:transparent; color:var(--tinta);
+  border:1px solid var(--linea); border-radius:100px;
+  font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; font-weight:400;
+  transition:background .25s, color .25s, border-color .25s;
+}
+.chip:hover{ border-color:var(--tinta); }
+.chip.activo{ background:var(--tinta); color:var(--crema); border-color:var(--tinta); }
+.chip--formato.activo{ background:var(--rosa); border-color:var(--rosa); color:#fff; }
+.chip svg{ width:13px; height:13px; fill:currentColor; }
+
+/* Botón de "ver todo el portfolio" / "volver" */
+.ver-todo{ text-align:center; margin-top:clamp(26px, 3vw, 36px); margin-bottom:0; }
+
+/* El portfolio de la portada va apretado por los dos lados: pegado a la
+   franja de logos por arriba y a Mi Material por abajo. */
+#portfolio{
+  padding-top:clamp(34px, 4vw, 58px);
+  padding-bottom:clamp(24px, 2.6vw, 36px);
+}
+#material{ padding-top:clamp(36px, 4.2vw, 56px); }
+
+/* La página de portfolio no tiene banner: hay que dejar sitio a la barra.
+   Y como no hay nada encima, el título sube y los trabajos empiezan
+   enseguida, sin el aire que tienen las secciones de la portada. */
+.pagina-suelta{ padding-top:var(--barra-alto); }
+.pagina-suelta .seccion,
+.pagina-suelta #portfolio{ padding-top:clamp(12px, 1.6vw, 22px); }
+.pagina-suelta .seccion__head{ margin-bottom:clamp(18px, 2.2vw, 28px); }
+.pagina-suelta .filtros{ margin-bottom:clamp(10px, 1.2vw, 16px); }
+.pagina-suelta .bloque-cat__titulo{ padding-bottom:9px; margin-bottom:18px; }
+
+/* Cada categoría es un bloque con su título y su cuadrícula debajo */
+.bloque-cat + .bloque-cat{ margin-top:clamp(48px, 6vw, 76px); }
+.bloque-cat__titulo{
+  font-family:var(--serif-cat);
+  font-style:italic;
+  font-weight:400;
+  color:var(--cafe);
+  font-size:clamp(26px, 3.4vw, 38px);
+  letter-spacing:.01em; line-height:1.15;
+  padding-bottom:14px; margin-bottom:26px;
+  border-bottom:1px solid var(--linea);
+  display:flex; align-items:center; gap:14px;
+}
+
+.grid-portfolio{
+  display:grid; grid-template-columns:repeat(4, 1fr); gap:26px;
+  align-items:start;
+}
+.tarjeta{
+  container-type:inline-size;      /* para medir el marco según su ancho */
+  position:relative; text-align:left;
+  display:flex; flex-direction:column;
+  animation:entra .5s ease both;
+}
+/* La firma se estira para llenar su hueco y el móvil queda siempre abajo */
+.tarjeta__movil{ margin-top:auto; }
+@keyframes entra{ from{ opacity:0; transform:translateY(14px) scale(.985); } to{ opacity:1; transform:none; } }
+
+/* ── El marco de móvil ─────────────────────────────────────────────────
+   El grosor del marco y el redondeo se calculan a partir del ancho de la
+   tarjeta (cqw), para que se vea igual de bien grande que pequeño.
+   Las líneas en px de encima son el respaldo para navegadores viejos.    */
+.tarjeta__movil{
+  position:relative;
+  padding:9px;
+  padding:3.2cqw;
+  border-radius:38px;
+  border-radius:14cqw;
+  background:linear-gradient(155deg, #FBF9F6 0%, #E6DED2 45%, #D3C8B8 100%);
+  box-shadow:
+    0 0 0 1px rgba(22,19,15,.09),
+    inset 0 1px 1px rgba(255,255,255,.95),
+    0 16px 34px -20px rgba(22,19,15,.55);
+  transition:transform .4s cubic-bezier(.2,.7,.3,1), box-shadow .4s;
+}
+.tarjeta:hover .tarjeta__movil{
+  transform:translateY(-6px);
+  box-shadow:
+    0 0 0 1px rgba(22,19,15,.12),
+    inset 0 1px 1px rgba(255,255,255,.95),
+    0 26px 44px -22px rgba(22,19,15,.6);
+}
+/* El altavoz de arriba del móvil */
+.tarjeta__movil::before{
+  content:''; position:absolute; z-index:2;
+  top:1.5cqw; left:50%; translate:-50% 0;
+  width:16cqw; height:1.1cqw; max-height:4px;
+  border-radius:100px; background:rgba(22,19,15,.16);
+}
+
+.tarjeta__media{
+  display:block; position:relative; overflow:hidden;
+  border-radius:30px;
+  border-radius:11cqw;
+  aspect-ratio:9/16; background:var(--crema-2);
+}
+.tarjeta__media img{ width:100%; height:100%; object-fit:cover; transition:transform .6s cubic-bezier(.2,.7,.3,1); }
+.tarjeta:hover .tarjeta__media img{ transform:scale(1.05); }
+.tarjeta__media video{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; background:#000; border-radius:inherit;
+}
+.tarjeta__media::after{
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(to top, rgba(0,0,0,.3), transparent 42%);
+  opacity:0; transition:opacity .4s;
+}
+.tarjeta:hover .tarjeta__media::after{ opacity:1; }
+.tarjeta.reproduciendo .tarjeta__media::after{ opacity:0; }
+.tarjeta.reproduciendo .tarjeta__etiqueta{ opacity:0; }
+
+.tarjeta__play{
+  position:absolute; inset:0; margin:auto; z-index:2;
+  width:54px; height:54px; border:0; border-radius:50%;
+  background:rgba(255,255,255,.92); color:var(--tinta);
+  display:grid; place-items:center; cursor:pointer;
+  box-shadow:0 6px 18px -8px rgba(0,0,0,.5);
+  transition:transform .35s, background .3s, color .3s, opacity .3s;
+}
+.tarjeta:hover .tarjeta__play{ transform:scale(1.1); background:var(--rosa); color:#fff; }
+.tarjeta__play svg{ width:21px; height:21px; fill:currentColor; margin-left:2px; }
+.tarjeta__play--fuera{ font-size:20px; line-height:1; }
+/* Todavía sin vídeo subido: se ve, pero apagado */
+.tarjeta__play--vacio{ opacity:.4; pointer-events:none; }
+.tarjeta:hover .tarjeta__play--vacio{ transform:none; background:rgba(255,255,255,.92); color:var(--tinta); }
+.tarjeta.reproduciendo .tarjeta__play{ opacity:0; pointer-events:none; }
+
+.tarjeta__etiqueta{
+  position:absolute; top:14px; left:14px; z-index:2;
+  padding:5px 11px; border-radius:100px;
+  background:rgba(255,255,255,.92); color:var(--tinta);
+  font-size:9px; letter-spacing:.14em; text-transform:uppercase;
+  transition:opacity .3s;
+}
+/* ══════════════════════════════════════════════════════════════════════════
+   FOTOS
+   Sin marco de móvil: una cuadrícula limpia de tres en fondo.
+   Una foto marcada como "ancha" ocupa la fila entera.
+   ══════════════════════════════════════════════════════════════════════════ */
+.grid-fotos{
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:14px;
+}
+.grid-fotos--portada{ margin-top:26px; }
+
+.foto{
+  position:relative; overflow:hidden; border-radius:var(--radio);
+  aspect-ratio:4/5; background:var(--crema-2);
+}
+.foto--ancha{ grid-column:1 / -1; aspect-ratio:16/9; }
+.foto img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  transition:transform .7s cubic-bezier(.2,.7,.3,1);
+}
+.foto:hover img{ transform:scale(1.04); }
+
+@media (max-width:640px){
+  .grid-fotos{ gap:8px; }
+  .foto--ancha{ aspect-ratio:3/2; }
+}
+
+/* Aviso de "no encuentro el archivo" (solo sale en modo edición) */
+.tarjeta__aviso{
+  position:absolute; inset:0; z-index:3; cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:8px; padding:22px; text-align:center;
+  background:rgba(22,19,15,.92); color:var(--crema);
+  border-radius:inherit; font-size:12.5px; line-height:1.5;
+}
+.tarjeta__aviso b{ font-family:var(--serif); font-size:16px; font-weight:400; color:#fff; }
+.tarjeta__aviso code{
+  font-family:ui-monospace, Consolas, monospace; font-size:11px;
+  padding:5px 9px; border-radius:3px; word-break:break-all;
+  background:rgba(245,241,235,.14); color:#fff;
+}
+
+/* La firma del trabajo, ENCIMA del móvil:
+   el logo, una raya fina, y el texto a la derecha.
+
+   ALTURA FIJA a propósito: así todos los móviles de la fila arrancan
+   exactamente a la misma altura, tenga uno dos líneas y otro una,
+   o lleve logo y el de al lado no. La firma se pega abajo del hueco. */
+.tarjeta__info{
+  min-height:66px;
+  display:flex; align-items:flex-end;
+  padding:0 4px 15px;
+}
+.tarjeta__credito{ display:flex; align-items:center; gap:13px; width:100%; min-width:0; }
+.tarjeta__raya{
+  width:1px; align-self:stretch; min-height:30px; flex:none;
+  background:var(--linea);
+}
+.tarjeta__lineas{ min-width:0; display:flex; flex-direction:column; gap:2px; }
+
+/* Cada línea, una sola línea. Si no cabe, se corta con puntos suspensivos:
+   es lo que garantiza que la altura no se dispare nunca. */
+.tarjeta__titulo, .tarjeta__detalle{
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.tarjeta__titulo{ font-size:14px; font-weight:400; line-height:1.35; }
+.tarjeta__detalle{ font-size:13px; font-weight:300; line-height:1.35; color:var(--gris); }
+.tarjeta__marca-txt{
+  font-size:10px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--gris); flex:none;
+}
+/* Misma altura para todos y el ancho según su forma, así la raya queda
+   pegada al logo y no a media distancia cuando el logo es cuadrado */
+.tarjeta__logo{
+  height:42px; width:auto; max-width:130px; object-fit:contain; flex:none;
+}
+
+/* Mientras editas sí puede crecer, para que veas el texto entero */
+body.ed-on .tarjeta__titulo, body.ed-on .tarjeta__detalle{
+  white-space:normal; overflow:visible;
+}
+
+@media (max-width:1180px){
+  .tarjeta__logo{ height:38px; max-width:115px; }
+}
+@media (max-width:860px){
+  .tarjeta__info{ min-height:60px; }
+  .tarjeta__logo{ height:36px; max-width:105px; }
+}
+@media (max-width:640px){
+  .tarjeta__info{ min-height:52px; padding-bottom:11px; }
+  .tarjeta__credito{ gap:9px; }
+  .tarjeta__logo{ height:28px; max-width:80px; }
+  .tarjeta__raya{ min-height:24px; }
+  .tarjeta__titulo{ font-size:12.5px; }
+  .tarjeta__detalle{ font-size:11.5px; }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   4. SERVICIOS
+   ══════════════════════════════════════════════════════════════════════════ */
+.servicios{ display:grid; gap:34px; max-width:900px; margin-inline:auto; }
+.servicio{
+  display:grid; grid-template-columns:150px 1fr; gap:28px; align-items:center;
+  padding-bottom:34px; border-bottom:1px solid var(--linea);
+}
+.servicios .servicio:last-child{ border-bottom:0; padding-bottom:0; }
+.servicio__img{ aspect-ratio:4/3; overflow:hidden; border-radius:var(--radio); background:var(--crema); }
+.servicio__img img{ width:100%; height:100%; object-fit:cover; transition:transform .6s; }
+.servicio:hover .servicio__img img{ transform:scale(1.05); }
+.servicio__nombre{ font-size:14px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; margin-bottom:8px; }
+.servicio__texto{ color:var(--gris); font-size:15px; max-width:56ch; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   5. MI MATERIAL
+   ══════════════════════════════════════════════════════════════════════════ */
+/* Una sola foto a lo ancho con todo el equipo */
+.material-foto{
+  margin:0; overflow:hidden; border-radius:4px;
+  border:1px solid var(--linea); background:var(--crema-2);
+  box-shadow:0 26px 54px -34px rgba(22,19,15,.6);
+}
+.material-foto img{ width:100%; height:auto; display:block; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   6. SOBRE MÍ
+   ══════════════════════════════════════════════════════════════════════════ */
+.sobre{ display:grid; grid-template-columns:.85fr 1fr; gap:clamp(36px, 6vw, 84px); align-items:center; }
+.sobre__foto{ aspect-ratio:4/5; overflow:hidden; border-radius:var(--radio); background:var(--crema); }
+.sobre__foto img{ width:100%; height:100%; object-fit:cover; }
+.sobre__titulo{ font-family:var(--serif); font-weight:400; font-size:clamp(28px, 4vw, 46px); line-height:1.16; letter-spacing:.03em; }
+.sobre__sub{ margin:12px 0 22px; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--rosa); }
+.sobre__texto p{ color:var(--gris); margin-bottom:16px; max-width:56ch; }
+.sobre__datos{ display:flex; gap:clamp(26px, 4vw, 54px); margin:30px 0 32px; flex-wrap:wrap; }
+.sobre__dato b{ display:block; font-family:var(--serif); font-size:32px; font-weight:500; line-height:1; }
+.sobre__dato span{ font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--gris); }
+.sobre__texto .btn + .btn{ margin-left:10px; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   7. TESTIMONIOS
+   ══════════════════════════════════════════════════════════════════════════ */
+.testimonios{ display:grid; grid-template-columns:repeat(3, 1fr); gap:26px; }
+.testimonio{
+  background:var(--crema-2); border-radius:var(--radio);
+  padding:36px 32px; position:relative;
+}
+.testimonio::before{
+  content:'”'; position:absolute; top:6px; left:24px;
+  font-family:var(--serif); font-size:76px; color:var(--rosa); opacity:.35; line-height:1;
+}
+.testimonio__texto{ font-family:var(--serif); font-size:17px; font-style:italic; line-height:1.6; position:relative; }
+.testimonio__autor{ margin-top:20px; font-size:12px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; }
+.testimonio__cargo{ font-size:12.5px; color:var(--gris); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   8. FAQ
+   ══════════════════════════════════════════════════════════════════════════ */
+.faq__item{ border-bottom:1px solid var(--linea); }
+.faq__boton{
+  width:100%; background:none; border:0; padding:24px 40px 24px 0;
+  display:flex; justify-content:space-between; align-items:center; gap:20px;
+  text-align:left; font-family:var(--serif); font-size:19px; position:relative;
+}
+.faq__boton::after{
+  content:'+'; position:absolute; right:4px;
+  font-family:var(--sans); font-size:24px; font-weight:300; color:var(--rosa);
+  transition:transform .3s;
+}
+.faq__item.abierto .faq__boton::after{ transform:rotate(45deg); }
+.faq__respuesta{ max-height:0; overflow:hidden; transition:max-height .4s ease; }
+.faq__respuesta p{ padding:0 40px 26px 0; color:var(--gris); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   9. CONTACTO
+   ══════════════════════════════════════════════════════════════════════════ */
+.contacto{
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  max-width:640px;
+}
+.contacto__titulo{ font-family:var(--serif); font-weight:400; font-size:clamp(34px, 5.2vw, 60px); line-height:1.08; letter-spacing:.02em; }
+.contacto__titulo em{ display:block; font-family:var(--firma); font-style:normal; color:var(--rosa); font-size:1.15em; margin-top:-.08em; }
+.contacto__texto{ margin:20px 0 34px; color:var(--gris); max-width:46ch; }
+
+.btn--grande{ padding:19px 46px; font-size:12px; letter-spacing:.2em; }
+
+/* Los otros sitios donde te pueden escribir, debajo del botón */
+.contacto__datos{
+  display:flex; flex-wrap:wrap; justify-content:center;
+  gap:14px clamp(20px, 4vw, 40px);
+  margin-top:38px; padding-top:32px;
+  border-top:1px solid var(--linea); width:100%;
+}
+.contacto__dato{ display:flex; align-items:center; gap:10px; font-size:14.5px; }
+.contacto__dato svg{ width:17px; height:17px; fill:var(--rosa); flex:none; }
+.contacto__dato a{ border-bottom:1px solid transparent; transition:border-color .25s; }
+.contacto__dato a:hover{ border-bottom-color:var(--tinta); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PIE
+   ══════════════════════════════════════════════════════════════════════════ */
+.pie{ background:var(--tinta); color:var(--crema); padding:56px 0 40px; }
+.pie__inner{ display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; }
+.pie .logo__l2{ color:#9C9188; }
+.pie__social{ display:flex; gap:14px; }
+.pie__social a{
+  width:40px; height:40px; border:1px solid rgba(245,241,235,.28); border-radius:50%;
+  display:grid; place-items:center; transition:background .3s, border-color .3s, color .3s;
+}
+.pie__social a:hover{ background:var(--rosa); border-color:var(--rosa); color:#fff; }
+.pie__social svg{ width:17px; height:17px; fill:currentColor; }
+.pie__copy{ font-size:12px; color:#9C9188; letter-spacing:.06em; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   AVISO DE BORRADOR (solo lo ves tú, cuando vienes del panel)
+   ══════════════════════════════════════════════════════════════════════════ */
+.aviso-borrador{
+  position:fixed; inset:auto 0 0 0; z-index:150;
+  display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;
+  padding:11px 20px; background:var(--rosa); color:#fff;
+  font-size:13px; text-align:center;
+  box-shadow:0 -8px 24px -16px rgba(0,0,0,.5);
+}
+.aviso-borrador b{ font-weight:600; }
+.aviso-borrador button{
+  padding:7px 14px; border:1px solid rgba(255,255,255,.6); border-radius:100px;
+  background:transparent; color:#fff;
+  font-size:9.5px; letter-spacing:.14em; text-transform:uppercase;
+  transition:background .25s, color .25s;
+}
+.aviso-borrador button:hover{ background:#fff; color:var(--rosa); }
+body:has(.aviso-borrador) .arriba{ bottom:66px; }
+
+/* Botón volver arriba */
+.arriba{
+  position:fixed; right:22px; bottom:22px; z-index:90;
+  width:44px; height:44px; border-radius:50%;
+  background:var(--tinta); color:var(--crema);
+  display:grid; place-items:center; font-size:17px;
+  opacity:0; visibility:hidden; transform:translateY(10px);
+  transition:opacity .3s, transform .3s, visibility .3s, background .3s;
+}
+.arriba.visible{ opacity:1; visibility:visible; transform:none; }
+.arriba:hover{ background:var(--rosa); }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════════════════════════ */
+@media (max-width:1180px){
+  .grid-portfolio{ grid-template-columns:repeat(3, 1fr); }
+}
+@media (max-width:1080px){
+  .testimonios{ grid-template-columns:repeat(2, 1fr); }
+}
+@media (max-width:860px){
+  .grid-portfolio{ grid-template-columns:repeat(2, 1fr); gap:20px; }
+}
+
+@media (max-width:960px){
+  .barra{ background:rgba(245,241,235,.92); backdrop-filter:blur(14px); border-bottom-color:var(--linea); }
+  .hamburguesa{ display:flex; }
+  .nav{
+    position:fixed; inset:var(--barra-alto) 0 auto 0;
+    flex-direction:column; align-items:stretch; gap:0;
+    background:var(--crema); border-bottom:1px solid var(--linea);
+    padding:8px 24px 28px;
+    max-height:0; overflow:hidden; opacity:0; visibility:hidden;
+    transition:max-height .4s ease, opacity .3s, visibility .3s;
+  }
+  .nav.abierto{ max-height:80svh; opacity:1; visibility:visible; overflow:auto; }
+  .nav__link{ padding:16px 0; border-bottom:1px solid var(--linea); font-size:12px; }
+  .nav__link::after{ display:none; }
+  .nav__cta{ margin:20px 0 0; }
+
+  .banner{ min-height:auto; padding-top:calc(var(--barra-alto) + 32px); }
+  .banner__inner{ grid-template-columns:1fr; gap:28px; }
+  .banner__texto{ text-align:left; justify-self:start; order:-1; }
+  .banner__frase{ margin-left:0; }
+  .banner__botones{ justify-content:flex-start; }
+  .banner__datos{ justify-content:flex-start; }
+  .banner__velo{
+    background:
+      linear-gradient(to bottom, rgba(245,241,235,.92) 0%, rgba(245,241,235,.78) 45%, rgba(245,241,235,.9) 100%);
+  }
+  .banner__scroll{ display:none; }
+
+  .sobre{ grid-template-columns:1fr; }
+  .sobre__foto{ max-width:380px; }
+  .contacto{ grid-template-columns:1fr; }
+}
+
+@media (max-width:640px){
+  .contenedor, .contenedor--estrecho, .barra__inner, .banner__inner{ width:calc(100% - 36px); }
+  .grid-portfolio{ grid-template-columns:repeat(2, 1fr); gap:14px; }
+  .tarjeta__info{ padding-top:12px; }
+  .testimonios{ grid-template-columns:1fr; }
+  .servicio{ grid-template-columns:96px 1fr; gap:18px; }
+  .banner__nombre1{ font-size:clamp(56px, 20vw, 96px); }
+  .social{ flex-direction:row; flex-wrap:wrap; gap:12px; }
+  .social__texto{ display:none; }
+  .sobre__texto .btn{ width:100%; }
+  .sobre__texto .btn + .btn{ margin:10px 0 0; }
+  .tarjeta__play{ width:44px; height:44px; }
+}

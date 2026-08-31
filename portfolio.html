@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Sara Pericacho</title>
+  <meta name="description" content="Todo el trabajo UGC de Sara Pericacho, por categorías.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Georgia'>S</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&family=Jost:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<!-- ══════════════════ BARRA SUPERIOR ══════════════════ -->
+<header class="barra solida" id="barra">
+  <div class="barra__inner">
+
+    <a href="index.html" class="logo" data-cerrar-menu>
+      <span class="logo__l1" data-c="general.logoLinea1">SARA</span>
+      <span class="logo__l2" data-c="general.logoLinea2">PERICACHO</span>
+    </a>
+
+    <nav class="nav" id="nav"></nav>
+
+    <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+
+  </div>
+</header>
+
+<main class="pagina-suelta">
+
+  <section class="seccion" id="portfolio">
+    <div class="contenedor">
+
+      <header class="seccion__head">
+        <h2 class="seccion__titulo" data-c="portfolio.titulo">PORTFOLIO</h2>
+        <p class="seccion__sub" data-c="portfolio.subtitulo"></p>
+      </header>
+
+      <!-- Filtros -->
+      <div class="filtros">
+        <div class="filtros__fila" id="filtrosCategoria" role="group" aria-label="Filtrar por categoría"></div>
+        <div class="filtros__fila filtros__fila--formato" id="filtrosFormato" role="group" aria-label="Filtrar por formato">
+          <button class="chip chip--formato activo" data-formato="video">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg> VÍDEO
+          </button>
+          <button class="chip chip--formato" data-formato="foto">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3l2-2h6l2 2h3v12H4z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="13" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg> FOTO
+          </button>
+        </div>
+      </div>
+
+      <div id="portfolioLista"></div>
+      <p class="vacio" id="portfolioVacio" hidden>No hay contenido con estos filtros todavía.</p>
+
+      <p class="ver-todo">
+        <a href="index.html" class="btn btn--linea">← VOLVER A LA PORTADA</a>
+      </p>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════════ PIE ══════════════════ -->
+<footer class="pie">
+  <div class="contenedor pie__inner">
+    <a href="index.html" class="logo logo--pie">
+      <span class="logo__l1" data-c="general.logoLinea1"></span>
+      <span class="logo__l2" data-c="general.logoLinea2"></span>
+    </a>
+    <ul class="pie__social" id="pieSocial"></ul>
+    <p class="pie__copy">© <span id="anio"></span> <span data-c="general.nombre"></span>. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<a href="#portfolio" class="arriba" id="arriba" aria-label="Volver arriba">↑</a>
+
+<script src="js/contenido.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

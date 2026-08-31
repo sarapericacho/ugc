@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sara Pericacho — Creadora UGC & Content Creator</title>
+  <meta name="description" content="Creadora de contenido UGC. Vídeos y fotografía de producto que conectan con tu audiencia.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sara Pericacho — Creadora UGC">
+  <meta property="og:description" content="Creadora de contenido UGC. Vídeos y fotografía de producto que conectan con tu audiencia.">
+  <meta property="og:image" content="imagenes/banner.jpg">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Georgia'>S</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&family=Jost:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<!-- ══════════════════ BARRA SUPERIOR ══════════════════ -->
+<header class="barra" id="barra">
+  <div class="barra__inner">
+
+    <a href="#inicio" class="logo" data-cerrar-menu>
+      <span class="logo__l1" data-c="general.logoLinea1">SARA</span>
+      <span class="logo__l2" data-c="general.logoLinea2">PERICACHO</span>
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="#inicio"    class="nav__link" data-cerrar-menu>INICIO</a>
+      <a href="#portfolio" class="nav__link" data-cerrar-menu>PORTFOLIO</a>
+      <a href="#servicios" class="nav__link" data-cerrar-menu data-seccion="servicios">SERVICIOS</a>
+      <a href="#material"  class="nav__link" data-cerrar-menu>MI MATERIAL</a>
+      <a href="#sobre-mi"  class="nav__link" data-cerrar-menu>SOBRE MÍ</a>
+      <a href="#contacto"  class="btn btn--negro nav__cta" data-cerrar-menu>TRABAJA CONMIGO</a>
+    </nav>
+
+    <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+
+  </div>
+</header>
+
+<main>
+
+<!-- ══════════════════ 1. BANNER ══════════════════ -->
+<section class="banner" id="inicio">
+  <div class="banner__foto" id="bannerFoto"></div>
+  <div class="banner__velo"></div>
+
+  <div class="banner__inner">
+
+    <!-- Iconos de contacto (columna izquierda) -->
+    <ul class="social" id="social"></ul>
+
+    <!-- Nombre y textos -->
+    <div class="banner__texto">
+      <p class="banner__kicker" data-c="banner.encimaDelNombre"></p>
+      <h1 class="banner__nombre">
+        <span class="banner__nombre1" data-c="banner.nombreGrande"></span>
+        <span class="banner__nombre2" data-c="banner.nombreFirma"></span>
+      </h1>
+      <p class="banner__frase" data-c="banner.frase"></p>
+      <div class="banner__botones" id="bannerBotones"></div>
+    </div>
+
+    <!-- Datos destacados -->
+    <ul class="banner__datos" id="bannerDatos"></ul>
+
+  </div>
+
+  <a href="#marcas" class="banner__scroll" aria-label="Bajar">
+    <span></span>
+  </a>
+</section>
+
+<!-- ══════════════════ 2. MARCAS ══════════════════ -->
+<section class="marcas" id="marcas">
+  <p class="marcas__titulo" data-c="marcas.titulo"></p>
+  <div class="marcas__pista" id="marcasPista"></div>
+</section>
+
+<!-- ══════════════════ 3. PORTFOLIO ══════════════════ -->
+<section class="seccion" id="portfolio">
+  <div class="contenedor">
+
+    <header class="seccion__head reveal">
+      <h2 class="seccion__titulo" data-c="portfolio.titulo"></h2>
+      <p class="seccion__sub" data-c="portfolio.subtitulo"></p>
+    </header>
+
+    <div class="grid-portfolio reveal" id="portfolioDestacados"></div>
+    <div class="grid-fotos grid-fotos--portada reveal" id="fotosDestacadas" hidden></div>
+    <p class="vacio" id="portfolioVacio" hidden>Todavía no has destacado ningún trabajo.</p>
+
+    <p class="ver-todo">
+      <a href="portfolio.html" class="btn btn--linea">VER TODO EL PORTFOLIO</a>
+    </p>
+
+  </div>
+</section>
+
+<!-- ══════════════════ 4. SERVICIOS ══════════════════ -->
+<section class="seccion seccion--crema" id="servicios" hidden>
+  <div class="contenedor">
+    <header class="seccion__head reveal">
+      <h2 class="seccion__titulo" data-c="servicios.titulo"></h2>
+      <p class="seccion__sub" data-c="servicios.subtitulo"></p>
+    </header>
+    <div class="servicios" id="listaServicios"></div>
+  </div>
+</section>
+
+<!-- ══════════════════ 5. MI MATERIAL ══════════════════ -->
+<section class="seccion" id="material">
+  <div class="contenedor">
+    <header class="seccion__head reveal">
+      <h2 class="seccion__titulo" data-c="material.titulo"></h2>
+      <p class="seccion__sub" data-c="material.subtitulo"></p>
+    </header>
+    <figure class="material-foto reveal">
+      <img id="fotoMaterial" alt="Mi material" loading="lazy">
+    </figure>
+  </div>
+</section>
+
+<!-- ══════════════════ 6. SOBRE MÍ ══════════════════ -->
+<section class="seccion seccion--crema" id="sobre-mi">
+  <div class="contenedor sobre">
+    <div class="sobre__foto reveal">
+      <img id="fotoSobreMi" alt="Sara Pericacho" loading="lazy">
+    </div>
+    <div class="sobre__texto reveal">
+      <h2 class="sobre__titulo">
+        <span data-c="sobreMi.titulo"></span><br>
+        <span data-c="sobreMi.tituloNombre"></span>
+      </h2>
+      <p class="sobre__sub" data-c="sobreMi.subtitulo"></p>
+      <div id="sobreParrafos"></div>
+      <ul class="sobre__datos" id="sobreDatos"></ul>
+      <a href="#contacto" class="btn btn--negro" id="btnTrabaja">TRABAJA CONMIGO</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ 7. TESTIMONIOS ══════════════════ -->
+<section class="seccion" id="testimonios" hidden>
+  <div class="contenedor">
+    <header class="seccion__head reveal">
+      <h2 class="seccion__titulo" data-c="testimonios.titulo"></h2>
+    </header>
+    <div class="testimonios" id="listaTestimonios"></div>
+  </div>
+</section>
+
+<!-- ══════════════════ 8. FAQ ══════════════════ -->
+<section class="seccion seccion--crema" id="faq" hidden>
+  <div class="contenedor contenedor--estrecho">
+    <header class="seccion__head reveal">
+      <h2 class="seccion__titulo" data-c="faq.titulo"></h2>
+    </header>
+    <div class="faq" id="listaFaq"></div>
+  </div>
+</section>
+
+<!-- ══════════════════ 9. CONTACTO ══════════════════ -->
+<section class="seccion" id="contacto">
+  <div class="contenedor contacto reveal">
+
+    <h2 class="contacto__titulo">
+      <span data-c="contacto.titulo"></span>
+      <em data-c="contacto.tituloFirma"></em>
+    </h2>
+    <p class="contacto__texto" data-c="contacto.texto"></p>
+
+    <a class="btn btn--negro btn--grande" id="btnEscribir" href="#" data-ed="contacto.textoBoton">ENVIAR MENSAJE</a>
+
+    <ul class="contacto__datos" id="contactoDatos"></ul>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════════════ PIE ══════════════════ -->
+<footer class="pie">
+  <div class="contenedor pie__inner">
+    <a href="#inicio" class="logo logo--pie">
+      <span class="logo__l1" data-c="general.logoLinea1"></span>
+      <span class="logo__l2" data-c="general.logoLinea2"></span>
+    </a>
+    <ul class="pie__social" id="pieSocial"></ul>
+    <p class="pie__copy">© <span id="anio"></span> <span data-c="general.nombre"></span>. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<a href="#inicio" class="arriba" id="arriba" aria-label="Volver arriba">↑</a>
+
+<script src="js/contenido.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
