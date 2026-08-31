@@ -504,16 +504,25 @@
     const hayAlgo = bloques.some((b) => b.items.length);
     $('#portfolioVacio').hidden = hayAlgo || window.MODO_EDICION;
 
+    /* En edición, cada fila termina con un "+" del mismo tamaño que sus
+       trabajos: uno para seguir añadiendo vídeos en su categoría, y otro
+       al final de las fotos. Lleva escrito de qué es, porque el "+" de las
+       fotos tiene que crear una foto aunque estés viendo los vídeos. */
+    const masDe = (categoria, fotos) => {
+      if (!window.MODO_EDICION) return '';
+      const tipo = fotos ? 'foto' : 'video';
+      return `<button type="button" class="ed-anadir ed-anadir--teja ed-ui"
+        data-ed-anadir-cat="${esc(categoria || '')}" data-ed-anadir-tipo="${tipo}"
+        ><b>+</b><span>AÑADIR ${fotos ? 'FOTO' : 'VÍDEO'}</span></button>`;
+    };
+
     lista.innerHTML = bloques.map((b) => `
       <section class="bloque-cat">
         <h3 class="bloque-cat__titulo"><span>${esc(b.titulo)}</span></h3>
         <div class="${b.fotos ? 'grid-fotos' : 'grid-portfolio'}">${
           b.items.map((it) => (b.fotos ? fotoDe(it, todos) : tarjetaDe(it, todos))).join('')
+          + masDe(b.categoria, b.fotos)
         }</div>
-        ${(window.MODO_EDICION && b.categoria !== null) ? `
-          <button type="button" class="ed-anadir ed-anadir--fila ed-ui" data-ed-anadir-cat="${esc(b.categoria)}">
-            + AÑADIR TRABAJO ${b.categoria ? 'A ' + esc(b.categoria.toUpperCase()) : ''}
-          </button>` : ''}
       </section>`).join('');
 
     rematarTarjetas(lista, todos);
