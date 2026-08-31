@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 31/8/2026, 22:06:28
+   Generado desde el editor el 31/8/2026, 22:58:42
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -149,7 +149,7 @@ const CONTENIDO = {
         marcaLogo: '',
         categoria: 'Belleza',
         tipo: 'foto',
-        portada: 'imagenes/portfolio/hf_20260830_172725_78923123-26d7-45f0-bd71-6ca9ea8ec7b8.webp',
+        portada: 'imagenes/portfolio/imagen-1788209903346.webp',
         archivo: 'imagenes/portfolio/4.jpg',
         enlace: '',
         destacado: false,
@@ -162,7 +162,7 @@ const CONTENIDO = {
         marcaLogo: '',
         categoria: 'Moda',
         tipo: 'foto',
-        portada: 'imagenes/portfolio/5.jpg',
+        portada: 'imagenes/portfolio/imagen-1788209911313.webp',
         archivo: 'imagenes/portfolio/5.jpg',
         enlace: '',
         destacado: false,
@@ -188,7 +188,7 @@ const CONTENIDO = {
         marcaLogo: '',
         categoria: 'Moda',
         tipo: 'foto',
-        portada: 'imagenes/portfolio/7.jpg',
+        portada: 'imagenes/portfolio/imagen-1788209878746.webp',
         archivo: 'imagenes/portfolio/7.jpg',
         enlace: '',
         destacado: false,
@@ -201,7 +201,7 @@ const CONTENIDO = {
         marcaLogo: '',
         categoria: 'Lifestyle',
         tipo: 'foto',
-        portada: 'imagenes/portfolio/8.jpg',
+        portada: 'imagenes/portfolio/imagen-1788209890223.webp',
         archivo: 'imagenes/portfolio/8.jpg',
         enlace: '',
         destacado: false,
