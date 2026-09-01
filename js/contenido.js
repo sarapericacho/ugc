@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 1/9/2026, 20:06:24
+   Generado desde el editor el 1/9/2026, 20:44:40
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -104,7 +104,7 @@ const CONTENIDO = {
     categorias: ['Moda', 'Belleza', 'Restaurantes', 'Home'],
 
     // Categorías apagadas: siguen aquí, pero no salen en la web publicada
-    categoriasOcultas: ['Home'],
+    categoriasOcultas: ['Home', ''],
 
     items: [
       {
