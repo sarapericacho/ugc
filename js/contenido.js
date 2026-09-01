@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 1/9/2026, 17:40:58
+   Generado desde el editor el 1/9/2026, 18:21:59
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -260,10 +260,10 @@ const CONTENIDO = {
         ancha: false,
       },
       {
-        titulo: 'Trabajo nuevo',
-        detalle: '',
+        titulo: 'Haul de Ropa',
+        detalle: 'Voz a la camara',
         marca: '',
-        marcaLogo: '',
+        marcaLogo: 'imagenes/marcas/logo-caudalie.png',
         categoria: 'Moda',
         tipo: 'video',
         portada: 'imagenes/portfolio/whatsapp-image-2026-08-31-at-13.35.11.webp',
@@ -273,10 +273,10 @@ const CONTENIDO = {
         ancha: false,
       },
       {
-        titulo: 'Presentación Coleccion Nueva',
-        detalle: 'en tienda',
+        titulo: 'Desfile de ropa',
+        detalle: '',
         marca: '',
-        marcaLogo: 'imagenes/marcas/logo-l-oreal-paris.webp',
+        marcaLogo: 'imagenes/marcas/logo-caudalie.png',
         categoria: 'Moda',
         tipo: 'video',
         portada: 'imagenes/portfolio/whatsapp-image-2026-08-31-at-13.35.16.webp',
@@ -286,8 +286,8 @@ const CONTENIDO = {
         ancha: false,
       },
       {
-        titulo: 'Trabajo nuevo',
-        detalle: '',
+        titulo: 'Presentación Coleccion Nueva',
+        detalle: 'en tienda',
         marca: '',
         marcaLogo: '',
         categoria: 'Moda',
@@ -302,7 +302,7 @@ const CONTENIDO = {
         titulo: 'Unboxing',
         detalle: 'Voz en off',
         marca: '',
-        marcaLogo: '',
+        marcaLogo: 'imagenes/marcas/logo-rituals.webp',
         categoria: 'Belleza',
         tipo: 'video',
         portada: 'imagenes/portfolio/chatgpt-image-1-sept-2026-16_55_16.webp',
