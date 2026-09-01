@@ -592,6 +592,20 @@
         izquierda = `<span class="tarjeta__marca-txt" data-ed="portfolio.items.${n}.marca">${esc(it.marca)}</span>`;
       }
 
+      /* Si a un vídeo no le has puesto portada, se enseña su primer
+         fotograma en vez de un hueco gris. El #t=0.1 le dice al navegador
+         que pinte ese instante; no descarga el vídeo entero. */
+      const locales = window.VISTAS_LOCALES || {};
+      const fuenteVista = locales[`portfolio.items.${n}.archivo`] || archivo;
+      const soloFotograma = esVideo && reproducible && !it.portada;
+      const conSalto = /^blob:/.test(fuenteVista) ? fuenteVista : fuenteVista + '#t=0.1';
+
+      const lienzo = soloFotograma
+        ? `<video class="tarjeta__vista" src="${esc(conSalto)}" preload="metadata"
+             muted playsinline data-ed-img="portfolio.items.${n}.portada"></video>`
+        : `<img src="${esc(it.portada || '')}" alt="${esc(it.titulo)}" data-relleno="${esc(it.titulo)}"
+             data-ed-img="portfolio.items.${n}.portada" loading="lazy">`;
+
       return `
       <article class="tarjeta" data-i="${n}" data-ed-item="portfolio.items.${n}" style="animation-delay:${Math.min(i * 45, 400)}ms">
         <div class="tarjeta__info">
@@ -608,7 +622,7 @@
         </div>
         <div class="tarjeta__movil">
           <div class="tarjeta__media">
-            <img src="${esc(it.portada || '')}" alt="${esc(it.titulo)}" data-relleno="${esc(it.titulo)}" data-ed-img="portfolio.items.${n}.portada" loading="lazy">
+            ${lienzo}
             <span class="tarjeta__etiqueta">${esVideo ? 'VÍDEO' : 'FOTO'}</span>
             ${boton}
           </div>
@@ -644,6 +658,32 @@
       });
     });
 
+    /* Si la portada de un vídeo apunta a un archivo que ya no está, en vez
+       de un hueco gris se enseña el primer fotograma del propio vídeo. */
+    $$('.tarjeta', grid).forEach((t) => {
+      const item = todos[+t.dataset.i];
+      if (!item) return;
+      const media = $('.tarjeta__media', t);
+      const img = media && $('img[data-ed-img]', media);
+      const ruta = archivoDe(item);
+      if (!img || !esVideoArchivo(ruta)) return;
+
+      img.addEventListener('error', () => {
+        if (img.dataset.falla) return;
+        img.dataset.falla = '1';
+        const locales = window.VISTAS_LOCALES || {};
+        const fuente = locales[`portfolio.items.${t.dataset.i}.archivo`] || ruta;
+        const v = document.createElement('video');
+        v.className = 'tarjeta__vista';
+        v.src = /^blob:/.test(fuente) ? fuente : fuente + '#t=0.1';
+        v.preload = 'metadata';
+        v.muted = true;
+        v.playsInline = true;
+        v.dataset.edImg = img.dataset.edImg;
+        img.replaceWith(v);
+      }, { once: true });
+    });
+
     protegerImagenes(grid);
 
     $$('.tarjeta', grid).forEach((t) => {
@@ -653,7 +693,9 @@
       if (!boton) return;
       // Se puede dar al botón o a cualquier parte de la pantalla del móvil
       [boton, media].forEach((z) => z.addEventListener('click', (e) => {
-        if (e.target.closest('video')) return;   // los controles del vídeo, a lo suyo
+        // Mientras se reproduce, los controles del vídeo van a lo suyo. Si
+        // solo se ve el primer fotograma, clicarlo lo pone en marcha.
+        if (t.classList.contains('reproduciendo') && e.target.closest('video')) return;
         reproducir(t, item);
       }));
     });
@@ -680,7 +722,7 @@
       if (item.enlace) window.open(item.enlace, '_blank', 'noopener');
       return;
     }
-    if ($('video', tarjeta)) return;   // ya está puesto
+    if (tarjeta.classList.contains('reproduciendo')) return;   // ya está en marcha
 
     /* Si acabas de elegir el vídeo desde el editor, el archivo todavía no
        está en la carpeta de la web: se reproduce el de tu ordenador. */
@@ -691,18 +733,27 @@
     $$('.tarjeta.reproduciendo').forEach((otra) => { if (otra !== tarjeta) pararTarjeta(otra); });
 
     const media = $('.tarjeta__media', tarjeta);
-    const portada = $('img', media);
-    const video = document.createElement('video');
-    video.src = fuente;
-    video.controls = true;
-    video.playsInline = true;
-    video.preload = 'metadata';
-    if (portada) video.poster = portada.currentSrc || portada.src;
 
-    video.addEventListener('ended', () => pararTarjeta(tarjeta));
-    video.addEventListener('error', () => avisarVideo(tarjeta, item, ruta));
+    /* Si ya se está viendo el primer fotograma, ese mismo elemento pasa a
+       ser el reproductor: así el vídeo no se descarga dos veces. */
+    let video = $('video.tarjeta__vista', media);
+    if (video) {
+      video.controls = true;
+      video.muted = false;
+    } else {
+      const portada = $('img', media);
+      video = document.createElement('video');
+      video.src = fuente;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = 'metadata';
+      if (portada) video.poster = portada.currentSrc || portada.src;
+      media.appendChild(video);
+    }
 
-    media.appendChild(video);
+    video.addEventListener('ended', () => pararTarjeta(tarjeta), { once: true });
+    video.addEventListener('error', () => avisarVideo(tarjeta, item, ruta), { once: true });
+
     tarjeta.classList.add('reproduciendo');
     const promesa = video.play();
     if (promesa && promesa.catch) promesa.catch(() => {});
@@ -732,7 +783,19 @@
 
   function pararTarjeta(tarjeta) {
     const v = $('video', tarjeta);
-    if (v) { v.pause(); v.removeAttribute('src'); v.load(); v.remove(); }
+    if (v) {
+      v.pause();
+      if (v.classList.contains('tarjeta__vista')) {
+        // Es el primer fotograma: se queda puesto, como portada otra vez
+        v.controls = false;
+        v.muted = true;
+        try { v.currentTime = 0.1; } catch (e) {}
+      } else {
+        v.removeAttribute('src');
+        v.load();
+        v.remove();
+      }
+    }
     tarjeta.classList.remove('reproduciendo');
   }
 
