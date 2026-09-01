@@ -397,6 +397,13 @@
     if (filtro.formato === 'foto') return;
 
     const cats = categoriasDe(CONT.portfolio.items);
+
+    // Si la categoría por la que filtrabas ya no existe (la has quitado o
+    // le has cambiado el nombre), se vuelve a verlas todas.
+    if (filtro.categoria !== 'TODAS' && !cats.includes(filtro.categoria)) {
+      filtro.categoria = 'TODAS';
+    }
+
     const activa = (c) => (filtro.categoria === c ? ' activo' : '');
 
     const mas = window.MODO_EDICION
@@ -531,9 +538,21 @@
         ><b>+</b><span>AÑADIR ${fotos ? 'FOTO' : 'VÍDEO'}</span></button>`;
     };
 
+    /* En edición, cada categoría lleva al lado con qué cambiarle el nombre
+       o quitarla. El bloque de fotos y el de "Otros" no: no son categorías
+       de verdad, salen solos. */
+    const mandosCat = (cat) => (window.MODO_EDICION && cat)
+      ? `<span class="ed-cat-mandos ed-ui">
+           <button type="button" class="ed-cat-btn" data-ed-cat-nombre="${esc(cat)}"
+             title="Cambiar el nombre de esta categoría">✎</button>
+           <button type="button" class="ed-cat-btn ed-cat-btn--x" data-ed-cat-quitar="${esc(cat)}"
+             title="Quitar esta categoría">✕</button>
+         </span>`
+      : '';
+
     lista.innerHTML = bloques.map((b) => `
       <section class="bloque-cat">
-        <h3 class="bloque-cat__titulo"><span>${esc(b.titulo)}</span></h3>
+        <h3 class="bloque-cat__titulo"><span>${esc(b.titulo)}</span>${mandosCat(b.categoria)}</h3>
         <div class="${b.fotos ? 'grid-fotos' : 'grid-portfolio'}">${
           b.items.map((it) => (b.fotos ? fotoDe(it, todos) : tarjetaDe(it, todos))).join('')
           + masDe(b.categoria, b.fotos)
