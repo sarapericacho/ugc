@@ -395,8 +395,9 @@
     enTrabajos.forEach((c) => { if (!p.categorias.includes(c)) p.categorias.push(c); });
     p.categorias = p.categorias.filter((c) => enTrabajos.includes(c));
 
-    // Que no se queden apagadas categorías que ya no existen
-    p.categoriasOcultas = ocultas().filter((c) => p.categorias.includes(c));
+    /* Que no se queden apagadas categorías que ya no existen. El '' se
+       queda siempre: es el bloque "Otros", los trabajos sin categoría. */
+    p.categoriasOcultas = ocultas().filter((c) => c === '' || p.categorias.includes(c));
 
     return p.categorias.slice();
   }
@@ -460,8 +461,10 @@
        marcado con la estrella y, si no llegan, se completa con el resto
        por orden. Así nunca se queda coja. */
     const elegir = (tipo, cuantos) => {
-      // Si has apagado una categoría, sus trabajos tampoco salen aquí
-      const suyos = todos.filter((it) => (it.tipo || 'video') === tipo && seVe(it.categoria));
+      /* Si has apagado una categoría, sus vídeos tampoco salen aquí. Las
+         fotos no van por categorías, así que no les afecta. */
+      const suyos = todos.filter((it) => (it.tipo || 'video') === tipo
+        && (tipo === 'foto' || seVe(it.categoria)));
       const marcados = suyos.filter((it) => it.destacado);
       const relleno = suyos.filter((it) => !it.destacado);
       return marcados.concat(relleno).slice(0, cuantos);
@@ -527,7 +530,7 @@
       // Los vídeos a los que aún no les has puesto categoría
       const sueltos = todos.filter((it) =>
         !(it.categoria || '').trim() && (it.tipo || 'video') === 'video');
-      if (sueltos.length && filtro.categoria === 'TODAS') {
+      if (sueltos.length && filtro.categoria === 'TODAS' && seVe('')) {
         bloques.push({ titulo: 'Otros', categoria: '', items: sueltos, fotos: false });
       }
 
@@ -556,24 +559,28 @@
     /* En edición, cada categoría lleva al lado con qué cambiarle el nombre
        o quitarla. El bloque de fotos y el de "Otros" no: no son categorías
        de verdad, salen solos. */
+    /* El bloque "Otros" (categoria '') lleva solo el interruptor: no tiene
+       nombre que cambiar ni categoría que quitar, pero sí se puede ocultar. */
     const mandosCat = (cat) => {
-      if (!window.MODO_EDICION || !cat) return '';
+      if (!window.MODO_EDICION || cat == null) return '';
       const on = !estaOculta(cat);
+      const suelto = cat === '';
       return `<span class="ed-cat-mandos ed-ui">
            <button type="button" class="ed-seccion-off ed-cat-ver${on ? ' on' : ''}"
              data-ed-cat-ver="${esc(cat)}"
-             title="${on ? 'Ahora se ve en tu web. Púlsalo para ocultarla.'
-                         : 'Ahora está oculta: solo la ves tú aquí.'}"
+             title="${on ? 'Ahora se ve en tu web. Púlsalo para ocultarlo.'
+                         : 'Ahora está oculto: solo lo ves tú aquí.'}"
              ><i></i>${on ? 'SE VE' : 'OCULTA'}</button>
+           ${suelto ? '' : `
            <button type="button" class="ed-cat-btn" data-ed-cat-nombre="${esc(cat)}"
              title="Cambiar el nombre de esta categoría">✎</button>
            <button type="button" class="ed-cat-btn ed-cat-btn--x" data-ed-cat-quitar="${esc(cat)}"
-             title="Quitar esta categoría">✕</button>
+             title="Quitar esta categoría">✕</button>`}
          </span>`;
     };
 
     lista.innerHTML = bloques.map((b) => `
-      <section class="bloque-cat${(window.MODO_EDICION && estaOculta(b.categoria)) ? ' bloque-cat--apagada' : ''}">
+      <section class="bloque-cat${(window.MODO_EDICION && b.categoria != null && estaOculta(b.categoria)) ? ' bloque-cat--apagada' : ''}">
         <h3 class="bloque-cat__titulo"><span>${esc(b.titulo)}</span>${mandosCat(b.categoria)}</h3>
         <div class="${b.fotos ? 'grid-fotos' : 'grid-portfolio'}">${
           b.items.map((it) => (b.fotos ? fotoDe(it, todos) : tarjetaDe(it, todos))).join('')
