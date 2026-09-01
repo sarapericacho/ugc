@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 1/9/2026, 20:44:40
+   Generado desde el editor el 2/9/2026, 1:45:59
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -101,7 +101,7 @@ const CONTENIDO = {
     cuantasFotosEnPortada: 3,
 
     // El orden en que salen las categorías, arriba y abajo
-    categorias: ['Moda', 'Belleza', 'Restaurantes', 'Home'],
+    categorias: ['Moda', 'Belleza', 'Food', 'Home'],
 
     // Categorías apagadas: siguen aquí, pero no salen en la web publicada
     categoriasOcultas: ['Home', ''],
@@ -122,10 +122,10 @@ const CONTENIDO = {
       },
       {
         titulo: 'Restaurante',
-        detalle: '',
+        detalle: 'Experience + Aesthetic',
         marca: '',
         marcaLogo: 'imagenes/marcas/logo-marca-xh5wd.webp',
-        categoria: 'Restaurantes',
+        categoria: 'Food',
         tipo: 'video',
         portada: 'imagenes/portfolio/3.jpg',
         archivo: 'imagenes/portfolio/whatsapp-video-2026-09-01-at-19.12.28.mp4',
@@ -177,7 +177,7 @@ const CONTENIDO = {
         detalle: '',
         marca: 'NESPRESSO',
         marcaLogo: '',
-        categoria: 'Restaurantes',
+        categoria: 'Food',
         tipo: 'foto',
         portada: 'imagenes/portfolio/imagen-1788209890223.webp',
         archivo: 'imagenes/portfolio/8.jpg',
@@ -337,6 +337,19 @@ const CONTENIDO = {
         tipo: 'video',
         portada: '',
         archivo: '',
+        enlace: '',
+        destacado: false,
+        ancha: false,
+      },
+      {
+        titulo: 'Snacks',
+        detalle: 'Unboxing + Taste Test',
+        marca: '',
+        marcaLogo: 'imagenes/marcas/logo-zara.webp',
+        categoria: 'Food',
+        tipo: 'video',
+        portada: 'imagenes/portfolio/whatsapp-image-2026-09-02-at-01.41.51.webp',
+        archivo: 'imagenes/portfolio/whatsapp-video-2026-09-02-at-01.38.16.mp4',
         enlace: '',
         destacado: false,
         ancha: false,
