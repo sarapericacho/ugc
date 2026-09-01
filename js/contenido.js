@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 1/9/2026, 2:34:46
+   Generado desde el editor el 1/9/2026, 13:29:54
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -147,7 +147,7 @@ const CONTENIDO = {
         detalle: '',
         marca: 'RITUALS',
         marcaLogo: '',
-        categoria: 'Belleza',
+        categoria: '',
         tipo: 'foto',
         portada: 'imagenes/portfolio/imagen-1788209903346.webp',
         archivo: 'imagenes/portfolio/4.jpg',
