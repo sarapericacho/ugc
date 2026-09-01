@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 31/8/2026, 23:00:01
+   Generado desde el editor el 1/9/2026, 2:34:46
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -215,6 +215,45 @@ const CONTENIDO = {
         categoria: 'Tech',
         tipo: 'video',
         portada: 'imagenes/portfolio/9.jpg',
+        archivo: '',
+        enlace: '',
+        destacado: false,
+        ancha: false,
+      },
+      {
+        titulo: 'Foto nueva',
+        detalle: '',
+        marca: '',
+        marcaLogo: '',
+        categoria: '',
+        tipo: 'foto',
+        portada: 'imagenes/portfolio/imagen-1788221493500.webp',
+        archivo: '',
+        enlace: '',
+        destacado: false,
+        ancha: false,
+      },
+      {
+        titulo: 'Foto nueva',
+        detalle: '',
+        marca: '',
+        marcaLogo: '',
+        categoria: '',
+        tipo: 'foto',
+        portada: 'imagenes/portfolio/imagen-1788221499992.webp',
+        archivo: '',
+        enlace: '',
+        destacado: false,
+        ancha: false,
+      },
+      {
+        titulo: 'Foto nueva',
+        detalle: '',
+        marca: '',
+        marcaLogo: '',
+        categoria: '',
+        tipo: 'foto',
+        portada: 'imagenes/portfolio/imagen-1788221515307.webp',
         archivo: '',
         enlace: '',
         destacado: false,
