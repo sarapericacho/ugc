@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 1/9/2026, 13:29:54
+   Generado desde el editor el 1/9/2026, 14:42:30
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -100,7 +100,7 @@ const CONTENIDO = {
     cuantasFotosEnPortada: 3,
 
     // El orden en que salen las categorías, arriba y abajo
-    categorias: ['Belleza', 'Lifestyle', 'Tech', 'Moda'],
+    categorias: ['Belleza', 'Lifestyle', 'Tech'],
 
     items: [
       {
@@ -254,6 +254,32 @@ const CONTENIDO = {
         categoria: '',
         tipo: 'foto',
         portada: 'imagenes/portfolio/imagen-1788221515307.webp',
+        archivo: '',
+        enlace: '',
+        destacado: false,
+        ancha: false,
+      },
+      {
+        titulo: 'Foto nueva',
+        detalle: '',
+        marca: '',
+        marcaLogo: '',
+        categoria: '',
+        tipo: 'foto',
+        portada: 'imagenes/portfolio/imagen-1788265984530.webp',
+        archivo: '',
+        enlace: '',
+        destacado: false,
+        ancha: false,
+      },
+      {
+        titulo: 'Foto nueva',
+        detalle: '',
+        marca: '',
+        marcaLogo: '',
+        categoria: '',
+        tipo: 'foto',
+        portada: 'imagenes/portfolio/imagen-1788266546972.webp',
         archivo: '',
         enlace: '',
         destacado: false,
