@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 1/9/2026, 19:15:18
+   Generado desde el editor el 1/9/2026, 19:16:25
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -105,16 +105,16 @@ const CONTENIDO = {
 
     items: [
       {
-        titulo: 'Maquillaje',
-        detalle: 'Paso a Paso',
+        titulo: 'Haul de Ropa',
+        detalle: 'Voz a la camara',
         marca: '',
-        marcaLogo: 'imagenes/marcas/logo-marca-sap0p.webp',
-        categoria: 'Belleza',
+        marcaLogo: 'imagenes/marcas/logo-caudalie.png',
+        categoria: 'Moda',
         tipo: 'video',
-        portada: 'imagenes/portfolio/whatsapp-image-2026-08-31-at-13.35.10.webp',
-        archivo: 'imagenes/portfolio/whatsapp-video-2026-08-31-at-13.35.12-2-.mp4',
+        portada: 'imagenes/portfolio/whatsapp-image-2026-08-31-at-13.35.11.webp',
+        archivo: 'imagenes/portfolio/whatsapp-video-2026-08-31-at-13.35.11-1-.mp4',
         enlace: '',
-        destacado: false,
+        destacado: true,
         ancha: false,
       },
       {
@@ -127,7 +127,7 @@ const CONTENIDO = {
         portada: 'imagenes/portfolio/3.jpg',
         archivo: '',
         enlace: '',
-        destacado: false,
+        destacado: true,
         ancha: false,
       },
       {
@@ -192,7 +192,7 @@ const CONTENIDO = {
         portada: 'imagenes/portfolio/9.jpg',
         archivo: '',
         enlace: '',
-        destacado: false,
+        destacado: true,
         ancha: false,
       },
       {
@@ -261,16 +261,16 @@ const CONTENIDO = {
         ancha: false,
       },
       {
-        titulo: 'Haul de Ropa',
-        detalle: 'Voz a la camara',
+        titulo: 'Maquillaje',
+        detalle: 'Paso a Paso',
         marca: '',
-        marcaLogo: 'imagenes/marcas/logo-caudalie.png',
-        categoria: 'Moda',
+        marcaLogo: 'imagenes/marcas/logo-marca-sap0p.webp',
+        categoria: 'Belleza',
         tipo: 'video',
-        portada: 'imagenes/portfolio/whatsapp-image-2026-08-31-at-13.35.11.webp',
-        archivo: 'imagenes/portfolio/whatsapp-video-2026-08-31-at-13.35.11-1-.mp4',
+        portada: 'imagenes/portfolio/whatsapp-image-2026-08-31-at-13.35.10.webp',
+        archivo: 'imagenes/portfolio/whatsapp-video-2026-08-31-at-13.35.12-2-.mp4',
         enlace: '',
-        destacado: false,
+        destacado: true,
         ancha: false,
       },
       {
