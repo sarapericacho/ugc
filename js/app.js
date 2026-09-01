@@ -375,11 +375,13 @@
     const p = CONT.portfolio || {};
     const enTrabajos = [];
     (items || []).forEach((it) => {
+      if ((it.tipo || 'video') !== 'video') return;   // las fotos no llevan categoría
       const c = (it.categoria || '').trim();
       if (c && !enTrabajos.includes(c)) enTrabajos.push(c);
     });
 
     if (!Array.isArray(p.categorias)) p.categorias = [];
+    // (las fotos no entran: van todas juntas, sin categorías)
     enTrabajos.forEach((c) => { if (!p.categorias.includes(c)) p.categorias.push(c); });
     p.categorias = p.categorias.filter((c) => enTrabajos.includes(c));
 
@@ -388,6 +390,12 @@
 
   function pintarFiltrosCategoria() {
     if (!$('#filtrosCategoria')) return;          // la portada no lleva filtros
+
+    /* Las categorías son cosa de los vídeos. Viendo las fotos la barra
+       sobra, porque salen todas juntas. */
+    $('#filtrosCategoria').hidden = filtro.formato === 'foto';
+    if (filtro.formato === 'foto') return;
+
     const cats = categoriasDe(CONT.portfolio.items);
     const activa = (c) => (filtro.categoria === c ? ' activo' : '');
 
@@ -480,25 +488,32 @@
     const bloques = [];
 
     const sonFotos = filtro.formato === 'foto';
+    const lasFotos = () => todos.filter((it) => it.tipo === 'foto');
 
-    (filtro.categoria === 'TODAS' ? cats : [filtro.categoria]).forEach((cat) => {
-      const suyos = deCategoria(cat);
-      if (suyos.length || window.MODO_EDICION) {
-        bloques.push({ titulo: cat, categoria: cat, items: suyos, fotos: sonFotos });
+    if (sonFotos) {
+      /* Las fotos no van por categorías: todas juntas en un solo bloque,
+         igual que salen al final de los vídeos. */
+      bloques.push({ titulo: 'Foto', categoria: null, items: lasFotos(), fotos: true });
+    } else {
+      (filtro.categoria === 'TODAS' ? cats : [filtro.categoria]).forEach((cat) => {
+        const suyos = deCategoria(cat);
+        if (suyos.length || window.MODO_EDICION) {
+          bloques.push({ titulo: cat, categoria: cat, items: suyos, fotos: false });
+        }
+      });
+
+      // Los vídeos a los que aún no les has puesto categoría
+      const sueltos = todos.filter((it) =>
+        !(it.categoria || '').trim() && (it.tipo || 'video') === 'video');
+      if (sueltos.length && filtro.categoria === 'TODAS') {
+        bloques.push({ titulo: 'Otros', categoria: '', items: sueltos, fotos: false });
       }
-    });
 
-    // Los trabajos a los que aún no les has puesto categoría
-    const sueltos = todos.filter((it) =>
-      !(it.categoria || '').trim() && (it.tipo || 'video') === filtro.formato);
-    if (sueltos.length && filtro.categoria === 'TODAS') {
-      bloques.push({ titulo: 'Otros', categoria: '', items: sueltos, fotos: sonFotos });
-    }
-
-    // Y abajo del todo, las fotos
-    if (filtro.formato === 'video' && filtro.categoria === 'TODAS') {
-      const fotos = todos.filter((it) => it.tipo === 'foto');
-      if (fotos.length) bloques.push({ titulo: 'Foto', categoria: null, items: fotos, fotos: true });
+      // Y abajo del todo, las fotos
+      if (filtro.categoria === 'TODAS') {
+        const fotos = lasFotos();
+        if (fotos.length) bloques.push({ titulo: 'Foto', categoria: null, items: fotos, fotos: true });
+      }
     }
 
     const hayAlgo = bloques.some((b) => b.items.length);
@@ -707,7 +722,9 @@
     $$('#filtrosFormato .chip').forEach((btn) => {
       btn.addEventListener('click', () => {
         filtro.formato = btn.dataset.formato;
+        filtro.categoria = 'TODAS';
         $$('#filtrosFormato .chip').forEach((b) => b.classList.toggle('activo', b === btn));
+        pintarFiltrosCategoria();
         pintarPortfolio();
       });
     });
