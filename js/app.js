@@ -371,6 +371,16 @@
      aparte (portfolio.categorias) para que puedas colocarlas como quieras.
      Aquí se mantiene esa lista al día: se añaden las nuevas al final y se
      quitan las que se han quedado sin ningún trabajo. */
+  /* Categorías apagadas: siguen estando y las ves en el editor, pero no
+     salen en la web que ve la gente, ni ellas ni sus trabajos. */
+  function ocultas() {
+    const p = CONT.portfolio || {};
+    if (!Array.isArray(p.categoriasOcultas)) p.categoriasOcultas = [];
+    return p.categoriasOcultas;
+  }
+  const estaOculta = (cat) => ocultas().includes((cat || '').trim());
+  const seVe = (cat) => window.MODO_EDICION || !estaOculta(cat);
+
   function categoriasDe(items) {
     const p = CONT.portfolio || {};
     const enTrabajos = [];
@@ -385,6 +395,9 @@
     enTrabajos.forEach((c) => { if (!p.categorias.includes(c)) p.categorias.push(c); });
     p.categorias = p.categorias.filter((c) => enTrabajos.includes(c));
 
+    // Que no se queden apagadas categorías que ya no existen
+    p.categoriasOcultas = ocultas().filter((c) => p.categorias.includes(c));
+
     return p.categorias.slice();
   }
 
@@ -396,15 +409,16 @@
     $('#filtrosCategoria').hidden = filtro.formato === 'foto';
     if (filtro.formato === 'foto') return;
 
-    const cats = categoriasDe(CONT.portfolio.items);
+    const cats = categoriasDe(CONT.portfolio.items).filter(seVe);
 
-    // Si la categoría por la que filtrabas ya no existe (la has quitado o
-    // le has cambiado el nombre), se vuelve a verlas todas.
+    // Si la categoría por la que filtrabas ya no existe (la has quitado, le
+    // has cambiado el nombre o la has apagado), se vuelve a verlas todas.
     if (filtro.categoria !== 'TODAS' && !cats.includes(filtro.categoria)) {
       filtro.categoria = 'TODAS';
     }
 
     const activa = (c) => (filtro.categoria === c ? ' activo' : '');
+    const apagada = (c) => (estaOculta(c) ? ' chip--apagada' : '');
 
     const mas = window.MODO_EDICION
       ? `<button class="chip chip--mas ed-ui" data-ed-nueva-cat title="Crear una categoría nueva">+ CATEGORÍA</button>`
@@ -415,7 +429,7 @@
 
     $('#filtrosCategoria').innerHTML =
       `<button class="chip${activa('TODAS')}" data-cat="TODAS">TODAS</button>`
-      + cats.map((c) => `<button${arrastre}${activa(c)}" data-cat="${esc(c)}">${esc(c)}</button>`).join('')
+      + cats.map((c) => `<button${arrastre}${activa(c)}${apagada(c)}" data-cat="${esc(c)}">${esc(c)}</button>`).join('')
       + mas;
 
     $$('#filtrosCategoria .chip[data-cat]').forEach((btn) => {
@@ -446,7 +460,8 @@
        marcado con la estrella y, si no llegan, se completa con el resto
        por orden. Así nunca se queda coja. */
     const elegir = (tipo, cuantos) => {
-      const suyos = todos.filter((it) => (it.tipo || 'video') === tipo);
+      // Si has apagado una categoría, sus trabajos tampoco salen aquí
+      const suyos = todos.filter((it) => (it.tipo || 'video') === tipo && seVe(it.categoria));
       const marcados = suyos.filter((it) => it.destacado);
       const relleno = suyos.filter((it) => !it.destacado);
       return marcados.concat(relleno).slice(0, cuantos);
@@ -502,7 +517,7 @@
          igual que salen al final de los vídeos. */
       bloques.push({ titulo: 'Foto', categoria: null, items: lasFotos(), fotos: true });
     } else {
-      (filtro.categoria === 'TODAS' ? cats : [filtro.categoria]).forEach((cat) => {
+      (filtro.categoria === 'TODAS' ? cats.filter(seVe) : [filtro.categoria]).forEach((cat) => {
         const suyos = deCategoria(cat);
         if (suyos.length || window.MODO_EDICION) {
           bloques.push({ titulo: cat, categoria: cat, items: suyos, fotos: false });
@@ -541,17 +556,24 @@
     /* En edición, cada categoría lleva al lado con qué cambiarle el nombre
        o quitarla. El bloque de fotos y el de "Otros" no: no son categorías
        de verdad, salen solos. */
-    const mandosCat = (cat) => (window.MODO_EDICION && cat)
-      ? `<span class="ed-cat-mandos ed-ui">
+    const mandosCat = (cat) => {
+      if (!window.MODO_EDICION || !cat) return '';
+      const on = !estaOculta(cat);
+      return `<span class="ed-cat-mandos ed-ui">
+           <button type="button" class="ed-seccion-off ed-cat-ver${on ? ' on' : ''}"
+             data-ed-cat-ver="${esc(cat)}"
+             title="${on ? 'Ahora se ve en tu web. Púlsalo para ocultarla.'
+                         : 'Ahora está oculta: solo la ves tú aquí.'}"
+             ><i></i>${on ? 'SE VE' : 'OCULTA'}</button>
            <button type="button" class="ed-cat-btn" data-ed-cat-nombre="${esc(cat)}"
              title="Cambiar el nombre de esta categoría">✎</button>
            <button type="button" class="ed-cat-btn ed-cat-btn--x" data-ed-cat-quitar="${esc(cat)}"
              title="Quitar esta categoría">✕</button>
-         </span>`
-      : '';
+         </span>`;
+    };
 
     lista.innerHTML = bloques.map((b) => `
-      <section class="bloque-cat">
+      <section class="bloque-cat${(window.MODO_EDICION && estaOculta(b.categoria)) ? ' bloque-cat--apagada' : ''}">
         <h3 class="bloque-cat__titulo"><span>${esc(b.titulo)}</span>${mandosCat(b.categoria)}</h3>
         <div class="${b.fotos ? 'grid-fotos' : 'grid-portfolio'}">${
           b.items.map((it) => (b.fotos ? fotoDe(it, todos) : tarjetaDe(it, todos))).join('')

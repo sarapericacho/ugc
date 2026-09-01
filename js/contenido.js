@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 1/9/2026, 19:20:33
+   Generado desde el editor el 1/9/2026, 19:29:53
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -101,7 +101,7 @@ const CONTENIDO = {
     cuantasFotosEnPortada: 3,
 
     // El orden en que salen las categorías, arriba y abajo
-    categorias: ['Moda', 'Belleza', 'Restaurantes', 'Tech'],
+    categorias: ['Moda', 'Belleza', 'Restaurantes'],
 
     items: [
       {
@@ -187,7 +187,7 @@ const CONTENIDO = {
         detalle: '',
         marca: 'PROYECTO PROPIO',
         marcaLogo: '',
-        categoria: 'Tech',
+        categoria: '',
         tipo: 'video',
         portada: 'imagenes/portfolio/9.jpg',
         archivo: '',
@@ -275,7 +275,7 @@ const CONTENIDO = {
       },
       {
         titulo: 'Desfile de ropa',
-        detalle: '',
+        detalle: 'Aesthetic',
         marca: '',
         marcaLogo: 'imagenes/marcas/logo-caudalie.png',
         categoria: 'Moda',
@@ -290,10 +290,10 @@ const CONTENIDO = {
         titulo: 'Presentación Coleccion Nueva',
         detalle: 'en tienda',
         marca: '',
-        marcaLogo: '',
+        marcaLogo: 'imagenes/marcas/logo-l-oreal-paris.webp',
         categoria: 'Moda',
         tipo: 'video',
-        portada: 'imagenes/portfolio/whatsapp-image-2026-08-31-at-13.35.15.webp',
+        portada: '',
         archivo: 'imagenes/portfolio/whatsapp-video-2026-08-31-at-13.35.15.mp4',
         enlace: '',
         destacado: false,
@@ -313,8 +313,8 @@ const CONTENIDO = {
         ancha: false,
       },
       {
-        titulo: 'Trabajo nuevo',
-        detalle: '',
+        titulo: 'Maquillaje',
+        detalle: 'Aesthetic',
         marca: '',
         marcaLogo: 'imagenes/marcas/logo-shein.webp',
         categoria: 'Belleza',
