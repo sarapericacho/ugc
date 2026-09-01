@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 1/9/2026, 18:21:59
+   Generado desde el editor el 1/9/2026, 19:14:48
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -100,12 +100,12 @@ const CONTENIDO = {
     cuantasFotosEnPortada: 3,
 
     // El orden en que salen las categorías, arriba y abajo
-    categorias: ['Moda', 'Belleza', 'Lifestyle', 'Tech'],
+    categorias: ['Moda', 'Belleza', 'Restaurantes', 'Tech'],
 
     items: [
       {
-        titulo: 'Maquillandome',
-        detalle: '',
+        titulo: 'Maquillaje',
+        detalle: 'Paso a Paso',
         marca: '',
         marcaLogo: 'imagenes/marcas/logo-marca-sap0p.webp',
         categoria: 'Belleza',
@@ -121,7 +121,7 @@ const CONTENIDO = {
         detalle: '',
         marca: 'NESPRESSO',
         marcaLogo: '',
-        categoria: 'Lifestyle',
+        categoria: 'Restaurantes',
         tipo: 'video',
         portada: 'imagenes/portfolio/3.jpg',
         archivo: '',
@@ -173,7 +173,7 @@ const CONTENIDO = {
         detalle: '',
         marca: 'NESPRESSO',
         marcaLogo: '',
-        categoria: 'Lifestyle',
+        categoria: 'Restaurantes',
         tipo: 'foto',
         portada: 'imagenes/portfolio/imagen-1788209890223.webp',
         archivo: 'imagenes/portfolio/8.jpg',
@@ -299,8 +299,8 @@ const CONTENIDO = {
         ancha: false,
       },
       {
-        titulo: 'Unboxing',
-        detalle: 'Voz en off',
+        titulo: 'SkinHair',
+        detalle: 'Unboxing + Voz en off',
         marca: '',
         marcaLogo: 'imagenes/marcas/logo-rituals.webp',
         categoria: 'Belleza',
