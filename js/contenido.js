@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 1/9/2026, 17:00:29
+   Generado desde el editor el 1/9/2026, 17:40:58
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -266,19 +266,6 @@ const CONTENIDO = {
         marcaLogo: '',
         categoria: 'Moda',
         tipo: 'video',
-        portada: 'imagenes/portfolio/whatsapp-image-2026-08-31-at-13.35.15.webp',
-        archivo: 'imagenes/portfolio/whatsapp-video-2026-08-31-at-13.35.15.mp4',
-        enlace: '',
-        destacado: false,
-        ancha: false,
-      },
-      {
-        titulo: 'Trabajo nuevo',
-        detalle: '',
-        marca: '',
-        marcaLogo: '',
-        categoria: 'Moda',
-        tipo: 'video',
         portada: 'imagenes/portfolio/whatsapp-image-2026-08-31-at-13.35.11.webp',
         archivo: 'imagenes/portfolio/whatsapp-video-2026-08-31-at-13.35.11-1-.mp4',
         enlace: '',
@@ -294,6 +281,19 @@ const CONTENIDO = {
         tipo: 'video',
         portada: 'imagenes/portfolio/whatsapp-image-2026-08-31-at-13.35.16.webp',
         archivo: 'imagenes/portfolio/whatsapp-video-2026-08-31-at-13.35.13.mp4',
+        enlace: '',
+        destacado: false,
+        ancha: false,
+      },
+      {
+        titulo: 'Trabajo nuevo',
+        detalle: '',
+        marca: '',
+        marcaLogo: '',
+        categoria: 'Moda',
+        tipo: 'video',
+        portada: 'imagenes/portfolio/whatsapp-image-2026-08-31-at-13.35.15.webp',
+        archivo: 'imagenes/portfolio/whatsapp-video-2026-08-31-at-13.35.15.mp4',
         enlace: '',
         destacado: false,
         ancha: false,
