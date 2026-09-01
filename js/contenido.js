@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 1/9/2026, 19:29:53
+   Generado desde el editor el 1/9/2026, 20:06:24
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -101,7 +101,10 @@ const CONTENIDO = {
     cuantasFotosEnPortada: 3,
 
     // El orden en que salen las categorías, arriba y abajo
-    categorias: ['Moda', 'Belleza', 'Restaurantes'],
+    categorias: ['Moda', 'Belleza', 'Restaurantes', 'Home'],
+
+    // Categorías apagadas: siguen aquí, pero no salen en la web publicada
+    categoriasOcultas: ['Home'],
 
     items: [
       {
@@ -321,6 +324,19 @@ const CONTENIDO = {
         tipo: 'video',
         portada: 'imagenes/portfolio/whatsapp-image-2026-08-31-at-13.35.09.webp',
         archivo: 'imagenes/portfolio/whatsapp-video-2026-08-31-at-13.35.15-1-.mp4',
+        enlace: '',
+        destacado: false,
+        ancha: false,
+      },
+      {
+        titulo: 'Trabajo nuevo',
+        detalle: '',
+        marca: '',
+        marcaLogo: '',
+        categoria: 'Home',
+        tipo: 'video',
+        portada: '',
+        archivo: '',
         enlace: '',
         destacado: false,
         ancha: false,
