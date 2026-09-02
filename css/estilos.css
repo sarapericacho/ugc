@@ -403,10 +403,15 @@ h1,h2,h3,p{ margin:0; }
 }
 .tarjeta__media img{ width:100%; height:100%; object-fit:cover; transition:transform .6s cubic-bezier(.2,.7,.3,1); }
 .tarjeta:hover .tarjeta__media img{ transform:scale(1.05); }
+/* El vídeo entra transparente y no se enseña hasta que tiene imagen de
+   verdad. Si no, en el móvil se veía un rectángulo negro tapando la
+   portada durante los segundos que tarda en cargar. */
 .tarjeta__media video{
   position:absolute; inset:0; width:100%; height:100%;
-  object-fit:cover; background:#000; border-radius:inherit;
+  object-fit:cover; background:transparent; border-radius:inherit;
+  opacity:0; transition:opacity .25s ease;
 }
+.tarjeta__media video.listo{ opacity:1; }
 .tarjeta__media::after{
   content:''; position:absolute; inset:0; pointer-events:none;
   background:linear-gradient(to top, rgba(0,0,0,.3), transparent 42%);

@@ -710,8 +710,12 @@
         v.playsInline = true;
         v.dataset.edImg = img.dataset.edImg;
         img.replaceWith(v);
+        mostrarCuandoTengaImagen(v);
       }, { once: true });
     });
+
+    // Los vídeos que hacen de portada tampoco se enseñan hasta tener imagen
+    $$('video.tarjeta__vista', grid).forEach(mostrarCuandoTengaImagen);
 
     protegerImagenes(grid);
 
@@ -728,6 +732,22 @@
         reproducir(t, item);
       }));
     });
+  }
+
+  /* Un vídeo recién puesto no tiene todavía ningún fotograma que enseñar y
+     se pinta como un rectángulo vacío. Se deja invisible hasta que lo tiene. */
+  function mostrarCuandoTengaImagen(video) {
+    const listo = () => video.classList.add('listo');
+    if (video.readyState >= 2) { listo(); return; }
+
+    video.classList.remove('listo');
+    ['loadeddata', 'canplay', 'playing', 'timeupdate']
+      .forEach((cuando) => video.addEventListener(cuando, listo, { once: true }));
+
+    /* Red de seguridad: si por lo que sea ninguno de esos avisos llega,
+       a los 3 segundos se enseña igualmente. Mejor eso que dejarlo
+       invisible para siempre. */
+    setTimeout(listo, 3000);
   }
 
   const archivoDe = (it) => it.archivo || (it.tipo === 'foto' ? it.portada : '');
@@ -780,6 +800,10 @@
       media.appendChild(video);
     }
 
+    // Hasta que no tenga imagen no se enseña: mientras, se sigue viendo la
+    // portada de debajo en vez de un rectángulo negro.
+    mostrarCuandoTengaImagen(video);
+
     video.addEventListener('ended', () => pararTarjeta(tarjeta), { once: true });
     video.addEventListener('error', () => avisarVideo(tarjeta, item, ruta), { once: true });
 
@@ -819,6 +843,7 @@
         v.controls = false;
         v.muted = true;
         try { v.currentTime = 0.1; } catch (e) {}
+        if (v.readyState >= 2) v.classList.add('listo');
       } else {
         v.removeAttribute('src');
         v.load();
