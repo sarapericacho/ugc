@@ -750,6 +750,14 @@
     setTimeout(listo, 3000);
   }
 
+  /* El volumen que hayas elegido para ese vídeo (0-100). Si no has tocado
+     nada, suena a tope, como siempre. */
+  const volumenDe = (it) => {
+    const n = it && it.volumen;
+    if (n === undefined || n === null || n === '') return 1;
+    return Math.max(0, Math.min(1, (Math.round(+n) || 0) / 100));
+  };
+
   const archivoDe = (it) => it.archivo || (it.tipo === 'foto' ? it.portada : '');
   const esVideoArchivo = (a) => /\.(mp4|webm|mov|m4v)$/i.test(a || '');
 
@@ -799,6 +807,9 @@
       if (portada) video.poster = portada.currentSrc || portada.src;
       media.appendChild(video);
     }
+
+    // Suena al volumen que hayas elegido para este trabajo
+    video.volume = volumenDe(item);
 
     // Hasta que no tenga imagen no se enseña: mientras, se sigue viendo la
     // portada de debajo en vez de un rectángulo negro.

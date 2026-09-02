@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 2/9/2026, 3:09:42
+   Generado desde el editor el 3/9/2026, 1:45:34
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -186,6 +186,19 @@ const CONTENIDO = {
         ancha: false,
       },
       {
+        titulo: 'Snacks',
+        detalle: 'Unboxing + Taste Test',
+        marca: '',
+        marcaLogo: 'imagenes/marcas/logo-zara.webp',
+        categoria: 'Food',
+        tipo: 'video',
+        portada: 'imagenes/portfolio/whatsapp-image-2026-09-02-at-01.41.51.webp',
+        archivo: 'imagenes/portfolio/whatsapp-video-2026-09-02-at-01.38.16.mp4',
+        enlace: '',
+        destacado: true,
+        ancha: false,
+      },
+      {
         titulo: 'Setup de grabación',
         detalle: '',
         marca: 'PROYECTO PROPIO',
@@ -195,7 +208,7 @@ const CONTENIDO = {
         portada: 'imagenes/portfolio/9.jpg',
         archivo: '',
         enlace: '',
-        destacado: true,
+        destacado: false,
         ancha: false,
       },
       {
@@ -337,19 +350,6 @@ const CONTENIDO = {
         tipo: 'video',
         portada: '',
         archivo: '',
-        enlace: '',
-        destacado: false,
-        ancha: false,
-      },
-      {
-        titulo: 'Snacks',
-        detalle: 'Unboxing + Taste Test',
-        marca: '',
-        marcaLogo: 'imagenes/marcas/logo-zara.webp',
-        categoria: 'Food',
-        tipo: 'video',
-        portada: 'imagenes/portfolio/whatsapp-image-2026-09-02-at-01.41.51.webp',
-        archivo: 'imagenes/portfolio/whatsapp-video-2026-09-02-at-01.38.16.mp4',
         enlace: '',
         destacado: false,
         ancha: false,
