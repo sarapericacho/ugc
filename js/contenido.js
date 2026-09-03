@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 3/9/2026, 2:37:40
+   Generado desde el editor el 3/9/2026, 18:55:58
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -105,7 +105,7 @@ const CONTENIDO = {
     categorias: ['Moda', 'Belleza', 'Food', 'Home'],
 
     // Categorías apagadas: siguen aquí, pero no salen en la web publicada
-    categoriasOcultas: ['Home', ''],
+    categoriasOcultas: [''],
 
     items: [
       {
@@ -361,14 +361,14 @@ const CONTENIDO = {
         volumen: 100,
       },
       {
-        titulo: 'Trabajo nuevo',
-        detalle: '',
+        titulo: 'Muebles',
+        detalle: 'Aesthetic',
         marca: '',
         marcaLogo: '',
         categoria: 'Home',
         tipo: 'video',
-        portada: '',
-        archivo: '',
+        portada: 'imagenes/portfolio/chatgpt-image-1-sept-2026-21_09_55.webp',
+        archivo: 'imagenes/portfolio/whatsapp-video-2026-09-03-at-15.55.49.mp4',
         enlace: '',
         destacado: false,
         ancha: false,
