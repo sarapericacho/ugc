@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 3/9/2026, 18:58:16
+   Generado desde el editor el 3/9/2026, 19:00:13
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -294,7 +294,7 @@ const CONTENIDO = {
         titulo: 'Maquillaje',
         detalle: 'Paso a Paso',
         marca: '',
-        marcaLogo: 'imagenes/marcas/logo-marca-sap0p.webp',
+        marcaLogo: 'imagenes/marcas/logo-shein.webp',
         categoria: 'Belleza',
         tipo: 'video',
         portada: 'imagenes/portfolio/whatsapp-image-2026-08-31-at-13.35.10.webp',
@@ -392,7 +392,7 @@ const CONTENIDO = {
         titulo: 'Trabajo nuevo',
         detalle: '',
         marca: '',
-        marcaLogo: '',
+        marcaLogo: 'imagenes/marcas/logo-shein.webp',
         categoria: 'Belleza',
         tipo: 'video',
         portada: '',
