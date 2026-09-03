@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 3/9/2026, 19:00:27
+   Generado desde el editor el 3/9/2026, 19:00:49
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -365,7 +365,7 @@ const CONTENIDO = {
         titulo: 'Muebles',
         detalle: 'Aesthetic',
         marca: '',
-        marcaLogo: '',
+        marcaLogo: 'imagenes/marcas/logo-marca-rtrfm.webp',
         categoria: 'Home',
         tipo: 'video',
         portada: 'imagenes/portfolio/chatgpt-image-1-sept-2026-21_09_55.webp',
