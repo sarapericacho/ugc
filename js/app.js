@@ -869,6 +869,19 @@
     tarjeta.classList.remove('reproduciendo');
   }
 
+  /* Quitar los atajos fáciles para guardarse tu material: el menú del clic
+     derecho sobre fotos y vídeos, y arrastrarlos fuera del navegador.
+     Mientras editas no se toca, para que puedas trabajar con normalidad. */
+  function initSinGuardar() {
+    const esMedia = (e) => e.target && e.target.closest && e.target.closest('img, video');
+    ['contextmenu', 'dragstart'].forEach((cuando) => {
+      document.addEventListener(cuando, (e) => {
+        if (window.MODO_EDICION) return;
+        if (esMedia(e)) e.preventDefault();
+      });
+    });
+  }
+
   function initFiltrosFormato() {
     if (!$('#filtrosFormato')) return;
     $$('#filtrosFormato .chip').forEach((btn) => {
@@ -1119,6 +1132,7 @@
       avisarBorrador();
       repintarTodo();
       initFiltrosFormato();
+      initSinGuardar();
       initMenu();
       initScroll();
       initReveal();
