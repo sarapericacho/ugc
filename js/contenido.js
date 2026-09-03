@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 3/9/2026, 1:45:34
+   Generado desde el editor el 3/9/2026, 2:37:40
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -91,6 +91,7 @@ const CONTENIDO = {
      tipo:      'video' o 'foto'  ->  decide en qué filtro aparece.
      destacado: true  ->  ese trabajo sale en la PORTADA.
      ancha:     true  ->  solo para fotos: ocupa la fila entera.
+     volumen:   0 a 100 -> cómo de alto suena ese vídeo en la web.
      ====================================================================== */
   portfolio: {
     titulo: 'PORTFOLIO',
@@ -119,6 +120,7 @@ const CONTENIDO = {
         enlace: '',
         destacado: true,
         ancha: false,
+        volumen: 100,
       },
       {
         titulo: 'Restaurante',
@@ -132,6 +134,7 @@ const CONTENIDO = {
         enlace: '',
         destacado: true,
         ancha: false,
+        volumen: 100,
       },
       {
         titulo: 'Fotografía de producto',
@@ -145,6 +148,7 @@ const CONTENIDO = {
         enlace: '',
         destacado: false,
         ancha: false,
+        volumen: 100,
       },
       {
         titulo: 'Look de entrenamiento',
@@ -158,6 +162,7 @@ const CONTENIDO = {
         enlace: '',
         destacado: false,
         ancha: false,
+        volumen: 100,
       },
       {
         titulo: 'Outfit inspo',
@@ -171,6 +176,7 @@ const CONTENIDO = {
         enlace: '',
         destacado: false,
         ancha: false,
+        volumen: 100,
       },
       {
         titulo: 'Café de mañana',
@@ -184,6 +190,7 @@ const CONTENIDO = {
         enlace: '',
         destacado: false,
         ancha: false,
+        volumen: 100,
       },
       {
         titulo: 'Snacks',
@@ -197,6 +204,7 @@ const CONTENIDO = {
         enlace: '',
         destacado: true,
         ancha: false,
+        volumen: 100,
       },
       {
         titulo: 'Setup de grabación',
@@ -210,6 +218,7 @@ const CONTENIDO = {
         enlace: '',
         destacado: false,
         ancha: false,
+        volumen: 100,
       },
       {
         titulo: 'Foto nueva',
@@ -223,6 +232,7 @@ const CONTENIDO = {
         enlace: '',
         destacado: false,
         ancha: false,
+        volumen: 100,
       },
       {
         titulo: 'Foto nueva',
@@ -236,6 +246,7 @@ const CONTENIDO = {
         enlace: '',
         destacado: false,
         ancha: false,
+        volumen: 100,
       },
       {
         titulo: 'Foto nueva',
@@ -249,6 +260,7 @@ const CONTENIDO = {
         enlace: '',
         destacado: false,
         ancha: false,
+        volumen: 100,
       },
       {
         titulo: 'Foto nueva',
@@ -262,6 +274,7 @@ const CONTENIDO = {
         enlace: '',
         destacado: false,
         ancha: false,
+        volumen: 100,
       },
       {
         titulo: 'Foto nueva',
@@ -275,6 +288,7 @@ const CONTENIDO = {
         enlace: '',
         destacado: false,
         ancha: false,
+        volumen: 100,
       },
       {
         titulo: 'Maquillaje',
@@ -288,6 +302,7 @@ const CONTENIDO = {
         enlace: '',
         destacado: true,
         ancha: false,
+        volumen: 100,
       },
       {
         titulo: 'Desfile de ropa',
@@ -301,6 +316,7 @@ const CONTENIDO = {
         enlace: '',
         destacado: false,
         ancha: false,
+        volumen: 100,
       },
       {
         titulo: 'Presentación Coleccion Nueva',
@@ -314,6 +330,7 @@ const CONTENIDO = {
         enlace: '',
         destacado: false,
         ancha: false,
+        volumen: 55,
       },
       {
         titulo: 'SkinHair',
@@ -327,6 +344,7 @@ const CONTENIDO = {
         enlace: '',
         destacado: false,
         ancha: false,
+        volumen: 100,
       },
       {
         titulo: 'Maquillaje',
@@ -340,6 +358,7 @@ const CONTENIDO = {
         enlace: '',
         destacado: false,
         ancha: false,
+        volumen: 100,
       },
       {
         titulo: 'Trabajo nuevo',
@@ -353,6 +372,7 @@ const CONTENIDO = {
         enlace: '',
         destacado: false,
         ancha: false,
+        volumen: 100,
       },
       {
         titulo: 'Foto nueva',
@@ -366,6 +386,7 @@ const CONTENIDO = {
         enlace: '',
         destacado: false,
         ancha: false,
+        volumen: 100,
       },
     ],
   },

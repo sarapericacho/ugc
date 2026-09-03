@@ -631,7 +631,8 @@
 
       const lienzo = soloFotograma
         ? `<video class="tarjeta__vista" src="${esc(conSalto)}" preload="metadata"
-             muted playsinline data-ed-img="portfolio.items.${n}.portada"></video>`
+             muted playsinline controlslist="nodownload"
+             data-ed-img="portfolio.items.${n}.portada"></video>`
         : `<img src="${esc(it.portada || '')}" alt="${esc(it.titulo)}" data-relleno="${esc(it.titulo)}"
              data-ed-img="portfolio.items.${n}.portada" loading="lazy">`;
 
@@ -708,6 +709,7 @@
         v.preload = 'metadata';
         v.muted = true;
         v.playsInline = true;
+        v.setAttribute('controlslist', 'nodownload');
         v.dataset.edImg = img.dataset.edImg;
         img.replaceWith(v);
         mostrarCuandoTengaImagen(v);
@@ -807,6 +809,9 @@
       if (portada) video.poster = portada.currentSrc || portada.src;
       media.appendChild(video);
     }
+
+    // Sin el botón de descargar en los controles del vídeo
+    video.setAttribute('controlslist', 'nodownload');
 
     // Suena al volumen que hayas elegido para este trabajo
     video.volume = volumenDe(item);
