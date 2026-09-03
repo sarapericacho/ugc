@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 3/9/2026, 19:01:19
+   Generado desde el editor el 3/9/2026, 19:02:51
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -208,20 +208,6 @@ const CONTENIDO = {
         volumen: 100,
       },
       {
-        titulo: 'Setup de grabación',
-        detalle: '',
-        marca: 'PROYECTO PROPIO',
-        marcaLogo: '',
-        categoria: '',
-        tipo: 'video',
-        portada: 'imagenes/portfolio/9.jpg',
-        archivo: '',
-        enlace: '',
-        destacado: false,
-        ancha: false,
-        volumen: 100,
-      },
-      {
         titulo: 'Foto nueva',
         detalle: '',
         marca: '',
@@ -292,6 +278,20 @@ const CONTENIDO = {
         volumen: 100,
       },
       {
+        titulo: 'Setup de grabación',
+        detalle: '',
+        marca: 'PROYECTO PROPIO',
+        marcaLogo: '',
+        categoria: '',
+        tipo: 'video',
+        portada: 'imagenes/portfolio/9.jpg',
+        archivo: '',
+        enlace: '',
+        destacado: true,
+        ancha: false,
+        volumen: 100,
+      },
+      {
         titulo: 'Maquillaje',
         detalle: 'Paso a Paso',
         marca: '',
@@ -301,7 +301,7 @@ const CONTENIDO = {
         portada: 'imagenes/portfolio/whatsapp-image-2026-08-31-at-13.35.10.webp',
         archivo: 'imagenes/portfolio/whatsapp-video-2026-08-31-at-13.35.12-2-.mp4',
         enlace: '',
-        destacado: true,
+        destacado: false,
         ancha: false,
         volumen: 100,
       },
@@ -390,8 +390,8 @@ const CONTENIDO = {
         volumen: 100,
       },
       {
-        titulo: 'Trabajo nuevo',
-        detalle: '',
+        titulo: 'Maquillaje',
+        detalle: 'Paso a Paso',
         marca: '',
         marcaLogo: 'imagenes/marcas/logo-shein.webp',
         categoria: 'Belleza',
