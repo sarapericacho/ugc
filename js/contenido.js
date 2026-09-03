@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 3/9/2026, 18:55:58
+   Generado desde el editor el 3/9/2026, 18:58:16
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -383,6 +383,20 @@ const CONTENIDO = {
         tipo: 'foto',
         portada: 'imagenes/portfolio/imagen-1788306449719.webp',
         archivo: '',
+        enlace: '',
+        destacado: false,
+        ancha: false,
+        volumen: 100,
+      },
+      {
+        titulo: 'Trabajo nuevo',
+        detalle: '',
+        marca: '',
+        marcaLogo: '',
+        categoria: 'Belleza',
+        tipo: 'video',
+        portada: '',
+        archivo: 'imagenes/portfolio/whatsapp-video-2026-09-01-at-19.21.38.mp4',
         enlace: '',
         destacado: false,
         ancha: false,
