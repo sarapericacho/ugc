@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 3/9/2026, 19:02:51
+   Generado desde el editor el 4/9/2026, 2:06:55
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -201,7 +201,7 @@ const CONTENIDO = {
         categoria: 'Food',
         tipo: 'video',
         portada: 'imagenes/portfolio/whatsapp-image-2026-09-02-at-01.41.51.webp',
-        archivo: 'imagenes/portfolio/whatsapp-video-2026-09-02-at-01.38.16.mp4',
+        archivo: 'imagenes/portfolio/nocilla-2.mov',
         enlace: '',
         destacado: true,
         ancha: false,
@@ -278,6 +278,20 @@ const CONTENIDO = {
         volumen: 100,
       },
       {
+        titulo: 'Maquillaje',
+        detalle: 'Paso a Paso',
+        marca: '',
+        marcaLogo: 'imagenes/marcas/logo-shein.webp',
+        categoria: 'Belleza',
+        tipo: 'video',
+        portada: '',
+        archivo: 'imagenes/portfolio/whatsapp-video-2026-09-01-at-19.21.38.mp4',
+        enlace: '',
+        destacado: true,
+        ancha: false,
+        volumen: 100,
+      },
+      {
         titulo: 'Setup de grabación',
         detalle: '',
         marca: 'PROYECTO PROPIO',
@@ -287,7 +301,7 @@ const CONTENIDO = {
         portada: 'imagenes/portfolio/9.jpg',
         archivo: '',
         enlace: '',
-        destacado: true,
+        destacado: false,
         ancha: false,
         volumen: 100,
       },
@@ -384,20 +398,6 @@ const CONTENIDO = {
         tipo: 'foto',
         portada: 'imagenes/portfolio/imagen-1788306449719.webp',
         archivo: '',
-        enlace: '',
-        destacado: false,
-        ancha: false,
-        volumen: 100,
-      },
-      {
-        titulo: 'Maquillaje',
-        detalle: 'Paso a Paso',
-        marca: '',
-        marcaLogo: 'imagenes/marcas/logo-shein.webp',
-        categoria: 'Belleza',
-        tipo: 'video',
-        portada: '',
-        archivo: 'imagenes/portfolio/whatsapp-video-2026-09-01-at-19.21.38.mp4',
         enlace: '',
         destacado: false,
         ancha: false,
