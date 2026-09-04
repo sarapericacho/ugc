@@ -1,7 +1,7 @@
 /* ==========================================================================
    CONTENIDO.JS  —  el contenido de tu web
    --------------------------------------------------------------------------
-   Generado desde el editor el 4/9/2026, 2:06:55
+   Generado desde el editor el 4/9/2026, 2:15:31
 
    Puedes editarlo aquí a mano o volver a usar el editor, como prefieras.
    Si lo tocas a mano: los textos van entre comillas ' ' y no borres las comas.
@@ -58,7 +58,7 @@ const CONTENIDO = {
     datos: [
       { numero: '+200k Followers', texto: 'Tiktok' },
       { numero: '+82k Followers', texto: 'Instagram' },
-      { numero: '+3 años', texto: 'creando' },
+      { numero: '+2 años', texto: 'creando' },
     ],
   },
 
